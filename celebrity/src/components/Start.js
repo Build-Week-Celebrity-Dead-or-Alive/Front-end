@@ -2,16 +2,18 @@ import React from 'react'
 import Button from './Button'
 
 const StartScreen = () => {
-  let isNameHere = window.localStorage.getItem("SignUpCred") || ""
+  let isNameHere = window.localStorage.getItem("SignUp") || ""
 
   return (
     <div className='start-screen'>
       <header className='start-content'>
-        {isNameHere === "" ? null : <h2>Welcome {isNameHere}!</h2>}
-        <h2>
-         dfgfdgdfgfd gfdg dfgfd gfdg fdg fdg dfgfd gfdg dfg fdgdf
-        </h2>
-        <h3>dfgfedgfdgfdg g dfg fd gfdgfd gdf gdf gfd</h3>
+        {/* {isNameHere === "" ? null : <h2>Welcome {isNameHere}!</h2>} */}
+        <h1>Dead<br /> Or
+        <br /> Alive</h1>
+        <h3>
+         Test your knowledge of Celebrity's Dead or Alive
+        </h3>
+        <p>Identify of which famous Celebritys are alive or are dead</p>
       </header>
       <div className='buttons'>
         <Button buttonText={'START PLAYING'} pathName={'play'} />
