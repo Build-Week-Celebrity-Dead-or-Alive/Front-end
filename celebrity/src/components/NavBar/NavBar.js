@@ -4,6 +4,11 @@ import {Link} from 'react-router-dom';
 // import styled from 'styled-components';
 import './NavBar.scss';
 
+
+
+
+
+
 /*
 const BottomNav = styled.div`
     top: 100px;
@@ -72,6 +77,10 @@ class NavBar extends Component {
             </Segment>
             {/*<BottomNav></BottomNav>*/}
           </Segment.Group>
+
+
+
+
         );
     }
 }

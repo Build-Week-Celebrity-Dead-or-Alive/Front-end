@@ -1,5 +1,10 @@
 import React from 'react';
-import logo from './logo.svg';
+import './App.css';
+import NavBar from './components/NavBar/NavBar.js';
+import { Switch, Route} from 'react-router-dom';
+import Login from "./components/Login";
+import Signup from "./components/Signup";
+import Start from './components/Start';
 import './App.css';
 
 function App() {
@@ -10,8 +15,10 @@ function App() {
 
      
       <Switch>
+        <Route exact path='/' component={Start} />
         <Route path="/login" component={Login} /> 
         <Route path="/signup" component={Signup} /> 
+        
       </Switch>
   
     </div>
