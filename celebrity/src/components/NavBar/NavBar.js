@@ -40,7 +40,7 @@ class NavBar extends Component {
                     <Icon name="coffee" size="big" fitted color="white" />
                   </Menu.Item>
                   <Menu.Item header className="headliner">
-                    Dead or Alive
+                    Dead or Alive 
                   </Menu.Item>
                 </Menu.Menu>
 
@@ -54,23 +54,23 @@ class NavBar extends Component {
                   > */}
                  
                     {/* </Menu.Item> */}
-                  <Menu.Item
+                  {/* <Menu.Item
                     as={Link}
                     name="login"
                     to="/login"
                     active={activeItem === "login"}
                     onClick={this.handleItemClick}
-                  >
+                  > */}
 
-                  </Menu.Item>
+                  {/* </Menu.Item> */}
                   <Menu.Item
                     as={Link}
-                    name="signup"
-                    to="/signup"
-                    active={activeItem === "Signup"}
-                    onClick={this.handleItemClick}
+                    // name="signup"
+                    // to="/signup"
+                    // active={activeItem === "Signup"}
+                    // onClick={this.handleItemClick}
                   >
-                    Signup
+                    {/* Signup */}
                   </Menu.Item>
                 </Menu.Menu>
               </Menu>

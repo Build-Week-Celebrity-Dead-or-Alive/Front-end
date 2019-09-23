@@ -15,6 +15,7 @@ const StartScreen = () => {
       </header>
       <div className='buttons'>
         <Button buttonText={'START PLAYING'} pathName={'play'} />
+        {isNameHere === "" ? <Button buttonText={'signup'} pathName={'signup'} /> : null}
         {isNameHere === "" ? <Button buttonText={'login'} pathName={'login'} /> : null}
       </div>
     </div>
