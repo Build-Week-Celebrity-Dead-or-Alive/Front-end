@@ -1,13 +1,8 @@
-import React, {Component} from 'react';
-import {Menu, Segment, Icon} from 'semantic-ui-react';
-import {Link} from 'react-router-dom';
+import React, { Component } from "react";
+import { Menu, Segment, Icon } from "semantic-ui-react";
+import { Link } from "react-router-dom";
 // import styled from 'styled-components';
-import './NavBar.scss';
-
-
-
-
-
+import "./NavBar.scss";
 
 /*
 const BottomNav = styled.div`
@@ -23,38 +18,46 @@ const BottomNav = styled.div`
 
 */
 class NavBar extends Component {
-    state = {activeItem: 'home'}
+  state = { activeItem: "home" };
 
-    handleItemClick = (e, {name}) => {
-        this.setState({activeItem: name})
-    }
+  handleItemClick = (e, { name }) => {
+    this.setState({ activeItem: name });
+  };
 
-    render() {
-        const {activeItem} = this.state
-        return (
-          <Segment.Group className='menu-group'>
-            <Segment color="white" inverted>
-              <Menu pointing secondary inverted stackable>
-                <Menu.Menu className='menu-left'>
-                  <Menu.Item>
-                    <Icon name="coffee" size="big" fitted color="white" />
-                  </Menu.Item>
-                  <Menu.Item header className="headliner">
-                    Dead or Alive 
-                  </Menu.Item>
-                </Menu.Menu>
+  render() {
+    const { activeItem } = this.state;
+    return (
+      <Segment.Group className="menu-group">
+        <Segment color="white" inverted>
+          <Menu pointing secondary inverted stackable>
+            <Menu.Menu className="menu-left">
+              <Menu.Item>
+                <Icon name="coffee" size="big" fitted color="white" />
+              </Menu.Item>
+              <Menu.Item header className="headliner">
+                Dead or Alive 
 
-                <Menu.Menu className='menu-right' position="right" >
-                  {/* <Menu.Item
+ 
+      <nav>
+         <Link to='/'>HOME</Link>
+         <Link to='/userscores'>Score</Link>
+         <Link to='/leaderboard'>LeaderBoard</Link>
+      </nav>
+  
+              </Menu.Item>
+            </Menu.Menu>
+
+            <Menu.Menu className="menu-right" position="right">
+              {/* <Menu.Item
                     as={Link}
                     name="home"
                     to="/"
                     active={activeItem === "home"}
                     onClick={this.handleItemClick}
                   > */}
-                 
-                    {/* </Menu.Item> */}
-                  {/* <Menu.Item
+
+              {/* </Menu.Item> */}
+              {/* <Menu.Item
                     as={Link}
                     name="login"
                     to="/login"
@@ -62,27 +65,23 @@ class NavBar extends Component {
                     onClick={this.handleItemClick}
                   > */}
 
-                  {/* </Menu.Item> */}
-                  <Menu.Item
-                    as={Link}
-                    name="signup"
-                    to="/signup"
-                    active={activeItem === "Signup"}
-                    onClick={this.handleItemClick}
-                  >
-                    {/* Signup */}
-                  </Menu.Item>
-                </Menu.Menu>
-              </Menu>
-            </Segment>
-            {/*<BottomNav></BottomNav>*/}
-          </Segment.Group>
-
-
-
-
-        );
-    }
+              {/* </Menu.Item> */}
+              <Menu.Item
+                as={Link}
+                name="signup"
+                to="/signup"
+                active={activeItem === "Signup"}
+                onClick={this.handleItemClick}
+              >
+                {/* Signup */}
+              </Menu.Item>
+            </Menu.Menu>
+          </Menu>
+        </Segment>
+        {/*<BottomNav></BottomNav>*/}
+      </Segment.Group>
+    );
+  }
 }
 
 export default NavBar;
