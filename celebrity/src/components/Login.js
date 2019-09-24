@@ -1,8 +1,35 @@
 import React, { useState } from 'react'
 import Button from './Button'
+import axios from 'axios';
+const LoginScreen = (props) => {
+  const [loginCred, setloginCred] = useState({ Name: '', password: '' })
+  const [errorMessage, setErrorMessage] = useState('');
 
-const LoginScreen = () => {
-  const [loginCred, setloginCred] = useState({ email: '', password: '' })
+
+  const login = e => {
+    e.preventDefault();
+    axios
+        .post('https://celebs-dead-or-alive.herokuapp.com/auth/login', loginCred)
+        .then(res => {
+            console.log(res)
+            localStorage.setItem('token', res.data.token)
+            setErrorMessage('')
+            props.history.push('/add_item')
+        })
+        .catch(err => {
+            console.log(typeof err.message)
+            setErrorMessage(err.message)
+        })
+}
+
+
+
+
+
+
+
+
+
 
   const handleChange = (e) => {
 
@@ -13,13 +40,13 @@ const LoginScreen = () => {
 
   return (
     <div className='login-screen'>
-      <form>
-        <label htmlFor='email'>
-          Email
+      <form onSubmit={login}>
+        <label htmlFor='Name'>
+          Name
           <input
-            placeholder='email'
-            value={loginCred.email}
-            name='email'
+            placeholder='Name'
+            value={loginCred.name}
+            name='name'
             onChange={handleChange}
           />
         </label>
