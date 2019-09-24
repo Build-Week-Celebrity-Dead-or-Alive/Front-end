@@ -16,6 +16,8 @@ const SignupScreen = () => {
 
   return (
     <div className='signup-screen'>
+        <h1>Dead<br /> Or
+        <br /> Alive</h1>
       <form>
         <label htmlFor='username'>
           Name

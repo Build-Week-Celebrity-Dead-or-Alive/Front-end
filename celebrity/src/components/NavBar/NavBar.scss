@@ -40,6 +40,8 @@ button {
   }
 
   form {
+    display: flex;
+    flex-direction: column;
     padding: 1%;
     margin-right: -1.5%;
 }
@@ -57,3 +59,37 @@ button {
 //     justify-content: center;
     
 //   }
+
+
+// .signup-screen {
+//   @include flex(center, center);
+//   flex-direction: column;
+//   form {
+//     @include flex(center, center);
+//     flex-direction: column;
+//     label {
+//       @include flex(center, center);
+//       flex-direction: column;
+//       padding: 1rem 0;
+//       font-size: 1.4rem;
+//       color: rgba($black, 0.6);
+//       line-height: 1.6rem;
+//       text-transform: uppercase;
+//       input {
+//         padding: 0.6rem;
+//         border: 1px solid $grey;
+//         border-radius: 6px;
+//       }
+//     }
+//     button {
+//       background-color: $red;
+//       margin-bottom: 2rem;
+//       color: $white;
+//       text-decoration: none;
+//     }
+//   }
+// }
+
+
+
+

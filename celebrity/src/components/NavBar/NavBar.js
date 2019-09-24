@@ -57,15 +57,15 @@ class NavBar extends Component {
                   > */}
 
               {/* </Menu.Item> */}
-              {/* <Menu.Item
+              <Menu.Item
                     as={Link}
                     name="login"
                     to="/login"
                     active={activeItem === "login"}
                     onClick={this.handleItemClick}
-                  > */}
+                  >
 
-              {/* </Menu.Item> */}
+              </Menu.Item>
               <Menu.Item
                 as={Link}
                 name="signup"

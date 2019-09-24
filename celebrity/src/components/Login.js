@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import Button from './Button'
 import axios from 'axios';
 import styled from 'styled-components'
+// import {Form} from '../styled-components/LoginStyle'
+
 
 export const ErrorParagraph = styled.p`
     padding: 16px;
@@ -14,15 +16,13 @@ export const ErrorParagraph = styled.p`
 `;
 
 
-
-
-
-
-
-
 const LoginScreen = (props) => {
-  const [loginCred, setloginCred] = useState({ Name: '', password: '' })
   const [errorMessage, setErrorMessage] = useState('');
+  const [loginCred, setloginCred] = useState({ 
+    Name: '',
+    password: '' 
+  })
+
 
 
   const login = e => {
@@ -48,10 +48,14 @@ const LoginScreen = (props) => {
     setloginCred({ ...loginCred, [e.target.name]: e.target.value })
   }
 
-  window.localStorage.setItem("LoginCred", JSON.stringify(loginCred))
+  window.localStorage.setItem("LoginCred",loginCred.username, JSON.stringify(loginCred))
 
   return (
+
+    // <Form>
     <div className='login-screen'>
+        <h1>Dead<br /> Or
+        <br /> Alive</h1>
       <form onSubmit={login}>
         <label htmlFor='Name'>
           Name
@@ -74,13 +78,14 @@ const LoginScreen = (props) => {
         </label>
         <div className='buttons'>
           <Button type='submit' buttonText={'SUBMIT'} pathName={''} />
-          <Button type='submit' buttonText={'SIGNUP'} pathName={'signup'} />
+          {/* <Button type='submit' buttonText={'SIGNUP'} pathName={'signup'} /> */}
         </div>
       </form>
       {errorMessage && <ErrorParagraph>
                                     {errorMessage}
                             </ErrorParagraph>}
     </div>
+    // </Form>
   )
 }
 
