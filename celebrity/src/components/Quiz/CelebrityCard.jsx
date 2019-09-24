@@ -50,9 +50,9 @@ function CelebrityCard(props) {
 
     return (
         <div className="celeb_wrapper">
-            <img src={mockCelebList.image_url} alt={`A picture of ${mockCelebList.name}`} />
-            <h2>{mockCelebList.name}</h2>
-            <p>{mockCelebList.info}</p>
+            <img src={mockCelebList[0].image_url} alt={`A picture of ${mockCelebList[0].name}`} />
+            <h2>{mockCelebList[0].name}</h2>
+            <p>{mockCelebList[0].info}</p>
         </div>
     )
 }
