@@ -1,6 +1,25 @@
 import React, { useState } from 'react'
 import Button from './Button'
 import axios from 'axios';
+import styled from 'styled-components'
+
+export const ErrorParagraph = styled.p`
+    padding: 16px;
+    background-color: #ffb7b7;
+    color: red;
+    border: solid 1px #f39595;
+    border-radius: 4px;
+    max-width: 700px;
+    margin: 16px auto;
+`;
+
+
+
+
+
+
+
+
 const LoginScreen = (props) => {
   const [loginCred, setloginCred] = useState({ Name: '', password: '' })
   const [errorMessage, setErrorMessage] = useState('');
@@ -21,13 +40,6 @@ const LoginScreen = (props) => {
             setErrorMessage(err.message)
         })
 }
-
-
-
-
-
-
-
 
 
 
@@ -65,6 +77,9 @@ const LoginScreen = (props) => {
           <Button type='submit' buttonText={'SIGNUP'} pathName={'signup'} />
         </div>
       </form>
+      {errorMessage && <ErrorParagraph>
+                                    {errorMessage}
+                            </ErrorParagraph>}
     </div>
   )
 }
