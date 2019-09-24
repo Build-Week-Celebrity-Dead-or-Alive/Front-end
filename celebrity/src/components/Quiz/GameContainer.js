@@ -49,9 +49,12 @@ export default function GameContainer(props) {
         }
     ];
     const [currentCard, setCurrentCard] = useState(mockCelebList[0]);
-    
-return (
-    <CelebrityCard currentCard={currentCard} />
-);
+
+    return (
+        <div className="quiz_wrapper">
+            <CelebrityCard currentCard={currentCard} />
+            <QuizHistory />
+        </div>
+    );
 
 }
