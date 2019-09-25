@@ -63,7 +63,8 @@ export default function QuizDisplay(props) {
     setQuizHistory,
     currentAnswer,
     setCurrentAnswer,
-    celebList
+    celebList,
+    gameTimer
   } = props;
 
   const onBtnClick = e => {
@@ -108,6 +109,9 @@ export default function QuizDisplay(props) {
         <button id="alive" onClick={onBtnClick}>
           Alive
         </button>
+        <div className="game-timer">
+          {gameTimer}
+        </div>
       </div>
     </StyledQuizDisplay>
   );

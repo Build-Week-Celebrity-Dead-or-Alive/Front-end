@@ -57,19 +57,29 @@ export default function GameContainer(props) {
   ];
   const [currentAnswer, setCurrentAnswer] = useState("");
   const [quizHistory, setQuizHistory] = useState([]);
-  const [ celebList, setCelebList ] = useState([]);
+  const [celebList, setCelebList] = useState([]);
   const [currentCard, setCurrentCard] = useState(mockCelebList[0]);
+  const [gameTimer, setGameTimer] = useState(0);
 
-//   useEffect(() => {
-//     axios.get('https://celebs-dead-or-alive.herokuapp.com/celebs')
-//     .then(res => {
-//         setCelebList(celebList.push(res.data));
-//         console.log(celebList)
-//     })
-//     .catch(err => {
-//         debugger
-//     })
-//   }, []);
+  // Instantiate the timer
+  useEffect(() => {
+    let timer = setInterval(() => {
+      setGameTimer(gameTimer => gameTimer + 1);
+    }, 1000);
+    return () => clearInterval(timer);
+  })
+
+
+  //   useEffect(() => {
+  //     axios.get('https://celebs-dead-or-alive.herokuapp.com/celebs')
+  //     .then(res => {
+  //         setCelebList(celebList.push(res.data));
+  //         console.log(celebList)
+  //     })
+  //     .catch(err => {
+  //         debugger
+  //     })
+  //   }, []);
 
   return (
     <StyledGameContainer>
@@ -83,8 +93,9 @@ export default function GameContainer(props) {
         setQuizHistory={setQuizHistory}
         currentAnswer={currentAnswer}
         setCurrentAnswer={setCurrentAnswer}
+        gameTimer={gameTimer}
       />
-      <QuizHistory quizHistory={quizHistory} mockCelebList={mockCelebList}/>
+      <QuizHistory quizHistory={quizHistory} mockCelebList={mockCelebList} />
     </StyledGameContainer>
   );
 }

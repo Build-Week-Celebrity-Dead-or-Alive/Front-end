@@ -15,11 +15,11 @@ const StyledCelebCard = styled.div`
     }
 `;
 
-function CelebrityCard({currentCard}) {
+function CelebrityCard({ currentCard }) {
 
     return (
         <StyledCelebCard>
-            <img src={currentCard.image_url} alt={`A picture of ${currentCard.name}`} />
+            <img src={currentCard.image_url} alt={`${currentCard.name}`} />
             <h2>{currentCard.name}</h2>
             <p>{currentCard.info}</p>
         </StyledCelebCard>
