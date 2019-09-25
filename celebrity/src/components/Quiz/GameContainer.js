@@ -1,7 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CelebrityCard from "./CelebrityCard";
 import QuizDisplay from "./QuizDisplay";
 import QuizHistory from "./QuizHistory";
+import styled from "styled-components";
+import axios from 'axios';
+
+const StyledGameContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
+`;
 
 export default function GameContainer(props) {
   const mockCelebList = [
@@ -48,18 +55,36 @@ export default function GameContainer(props) {
       isDead: 0
     }
   ];
+  const [currentAnswer, setCurrentAnswer] = useState("");
+  const [quizHistory, setQuizHistory] = useState([]);
+  const [ celebList, setCelebList ] = useState([]);
   const [currentCard, setCurrentCard] = useState(mockCelebList[0]);
-  const [answer, setAnswer] = useState("");
+
+//   useEffect(() => {
+//     axios.get('https://celebs-dead-or-alive.herokuapp.com/celebs')
+//     .then(res => {
+//         setCelebList(celebList.push(res.data));
+//         console.log(celebList)
+//     })
+//     .catch(err => {
+//         debugger
+//     })
+//   }, []);
+
   return (
-    <div>
+    <StyledGameContainer>
       <CelebrityCard currentCard={currentCard} />
       <QuizDisplay
         currentCard={currentCard}
         setCurrentCard={setCurrentCard}
         mockCelebList={mockCelebList}
-        answer={answer}
-        setAnswer={setAnswer}
+        celebList={celebList}
+        quizHistory={quizHistory}
+        setQuizHistory={setQuizHistory}
+        currentAnswer={currentAnswer}
+        setCurrentAnswer={setCurrentAnswer}
       />
-    </div>
+      <QuizHistory quizHistory={quizHistory} mockCelebList={mockCelebList}/>
+    </StyledGameContainer>
   );
 }

@@ -19,7 +19,7 @@ function App() {
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
           <Route exact path="/end" component={End} />
-          <Route exact path="/quiz" component={GameContainer} />
+          <Route exact path="/play" component={GameContainer} />
         </Switch>
       </div>
     </div>

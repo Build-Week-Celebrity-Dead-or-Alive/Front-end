@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
+import End from "../End";
 
 const StyledQuizDisplay = styled.div`
   width: 30vw;
@@ -53,19 +54,40 @@ const StyledQuizDisplay = styled.div`
   }
 `;
 
-export default function QuizDisplay({ currentCard, setCurrentCard, mockCelebList, setAnswer, answer }) {
-  
+export default function QuizDisplay(props) {
+  const {
+    currentCard,
+    setCurrentCard,
+    mockCelebList,
+    quizHistory,
+    setQuizHistory,
+    currentAnswer,
+    setCurrentAnswer,
+    celebList
+  } = props;
 
   const onBtnClick = e => {
-      if(e.target.id === 'dead' && currentCard.isDead ) {
-          setAnswer('Correct');
+    if (e.target.id === "dead" && currentCard.isDead) {
+      setQuizHistory(
+        quizHistory.concat({ name: currentCard.name, correct: true })
+      );
+      setCurrentAnswer("correct");
+      if (currentCard.id <= mockCelebList.length) {
+        setCurrentCard(mockCelebList[currentCard.id + 1]);
       } else {
-          setAnswer('Incorrect');
+        console.log("game ova");
       }
-      setCurrentCard(mockCelebList[currentCard.id+1])
+    } else {
+      setQuizHistory(
+        quizHistory.concat({ name: currentCard.name, correct: false })
+      );
+      setCurrentAnswer("incorrect");
+    }
+
     document.querySelector(".flashcard-inner").style.transform =
       "rotateY(180deg)";
   };
+
   return (
     <StyledQuizDisplay>
       <div className="flashcard">
@@ -74,7 +96,7 @@ export default function QuizDisplay({ currentCard, setCurrentCard, mockCelebList
             <h1>?</h1>
           </div>
           <div className="flashcard-back">
-            <h1>{answer}</h1>
+            <h1>{currentAnswer}</h1>
           </div>
         </div>
       </div>

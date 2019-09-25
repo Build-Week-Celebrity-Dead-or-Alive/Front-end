@@ -3,11 +3,11 @@ import React, { useState } from 'react';
 function QuizHistory(props) {
 
     const dummyHistoryData = [{ name: 'Tupac Shakur', correct: true }, { name: 'Biggie Smalls', correct: false }]
-
+    const { quizHistory, mockCelebList } = props;
     function getCurrentScore() {
         let true_count = 0;
-        let total_count = dummyHistoryData.length;
-        dummyHistoryData.forEach(element => {
+        let total_count = mockCelebList.length;
+        quizHistory.forEach(element => {
             true_count += element.correct ? 1 : 0
         })
         return (`${true_count}/${total_count}`);
@@ -20,7 +20,7 @@ function QuizHistory(props) {
                 <h3>{getCurrentScore()}</h3>
             </div>
             <div className="history_list">
-                {dummyHistoryData.map(obj => {
+                {quizHistory.map(obj => {
                     return <p>{obj.name} - {obj.correct ? 'true' : 'false'}</p>
                 })}
             </div>
