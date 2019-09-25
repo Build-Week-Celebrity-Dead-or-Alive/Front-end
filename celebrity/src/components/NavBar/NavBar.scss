@@ -30,9 +30,11 @@ div.buttons {
 button {
     padding: .5rem .5rem .5rem .5rem;
     margin: 1rem;
-    border-radius: 10px;
-    width: 165px;
+    border-radius: 25px;
+    width: 180px;
     border: none;
+    color: white;
+    background: black;
     text-decoration: none;
     font-size: 1.6rem;
     // cursor: pointer;
@@ -65,24 +67,24 @@ nav {
     
   }
 }
-.login-screen{
-@include flex(center, center);
-  flex-direction: column;
-  form {
-    @include flex(center, center);
-    flex-direction: column;
-    label {
-      @include flex(center, center);
-      flex-direction: column;
-      padding: 1rem 0;
-      font-size: 1.4rem;
-      line-height: 1.6rem;
-      text-transform: uppercase;
-      input {
-        padding: 0.6rem;
-        border-radius: 6px;
-      }
-    }
+// .login-screen{
+// @include flex(center, center);
+//   flex-direction: column;
+//   form {
+//     @include flex(center, center);
+//     flex-direction: column;
+//     label {
+//       @include flex(center, center);
+//       flex-direction: column;
+//       padding: 1rem 0;
+//       font-size: 1.4rem;
+//       line-height: 1.6rem;
+//       text-transform: uppercase;
+//       input {
+//         padding: 0.6rem;
+//         border-radius: 6px;
+//       }
+//     }
 
 
 
@@ -104,18 +106,16 @@ nav {
         border-radius: 6px;
       }
     }
-//     button {
-//       background-color: $red;
-//       margin-bottom: 2rem;
-//       color: $white;
-//       text-decoration: none;
-//     }
-//   }
-// }
-
-
-
+    button {
+      background-color: black;
+      margin-bottom: 2rem;
+      color: white;
+      text-decoration: none;
+    }
   }
 }
-  }
-}
+
+
+
+  
+

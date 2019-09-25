@@ -53,7 +53,7 @@ const LoginScreen = (props) => {
   return (
 
     // <Form>
-    <div className='login-screen'>
+    <div className='signup-screen'>
         <h1>Dead<br /> Or
         <br /> Alive</h1>
       <form onSubmit={login}>
