@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-
+import axios from 'axios'
 
 
 const NameForm = (props) => {
@@ -8,6 +8,32 @@ const NameForm = (props) => {
     const handleChange = (e) => {
       setPlayerName(e.target.value)
     }
+
+const sendScore = async () => {
+  try {
+    const id = localStorage.getItem('id') || '';
+    if(id) {
+      await axios
+      .put(`https://celebs-dead-or-alive.herokuapp.com/users/:id%E2%80%99-`, {
+        player_id: parseInt(id),
+        score: props.score
+      })
+    } else {
+ const newPalyer = 
+ await
+ axios
+ .post(`https://celebs-dead-or-alive.herokuapp.com/auth/register`, {
+   
+ })
+    }
+  
+
+
+
+
+
+
+
 
     const handleSubmit = (e) => {
         e.preventDefault()

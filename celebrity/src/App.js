@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.css';
 import NavBar from './components/NavBar/NavBar.js';
 import { Switch, Route} from 'react-router-dom';
@@ -7,9 +7,34 @@ import Signup from "./components/Signup";
 import Start from './components/Start';
 import './App.css';
 import End from './components/End'
-
+import { axiosWithAuth } from './Auth/axiosWithAuth.js';
 
 function App() {
+
+  const [ Celebrity, setCelebrity] = useState([]);
+
+
+  useEffect(() => {
+    axiosWithAuth()
+      .get('https://celebs-dead-or-alive.herokuapp.com/celebs')
+      .then(res => {
+        console.log(res)
+        setCelebrity(res.data)
+      }) 
+      .catch(err => console.log(err)) 
+  }, []);
+
+
+
+
+
+
+
+
+
+
+
+
   return (
     <div className="App">
      <NavBar />
