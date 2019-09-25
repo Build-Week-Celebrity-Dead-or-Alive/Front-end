@@ -5,12 +5,6 @@ const StartScreen = () => {
 
   let isNameHere = window.localStorage.getItem("SignUpCred") || ""
  
-
-
-
-
-
-
   
   return (
     <div className='start-screen'>
