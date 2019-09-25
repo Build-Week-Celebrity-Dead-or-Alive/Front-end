@@ -1,3 +1,6 @@
+@import 'mixins';
+
+
 html {
   background: lightgreen;
 }
@@ -32,7 +35,7 @@ button {
     border: none;
     text-decoration: none;
     font-size: 1.6rem;
-    cursor: pointer;
+    // cursor: pointer;
   }
 
   button:hover {
@@ -46,43 +49,61 @@ button {
     margin-right: -1.5%;
     padding: 2%;
     max-width: min-content;
-    margin-left: 39%;
+    margin-left: 0%;
 }
 
-// nav {
-//   background-color: red;
-//   vertical-align: text-bottom;
-//   padding: 1rem;
-//   width: 100%;
-//   a {
-//     font-size: 1.6rem;
-//     color: white;
-//     text-decoration: none;
-//     justify-content: center;
+nav {
+  background-color: red;
+  vertical-align: text-bottom;
+  padding: 1rem;
+  width: 100%;
+  a {
+    font-size: 1.6rem;
+    color: white;
+    text-decoration: none;
+    justify-content: center;
     
-//   }
+  }
+}
+.login-screen{
+@include flex(center, center);
+  flex-direction: column;
+  form {
+    @include flex(center, center);
+    flex-direction: column;
+    label {
+      @include flex(center, center);
+      flex-direction: column;
+      padding: 1rem 0;
+      font-size: 1.4rem;
+      line-height: 1.6rem;
+      text-transform: uppercase;
+      input {
+        padding: 0.6rem;
+        border-radius: 6px;
+      }
+    }
 
 
-// .signup-screen {
-//   @include flex(center, center);
-//   flex-direction: column;
-//   form {
-//     @include flex(center, center);
-//     flex-direction: column;
-//     label {
-//       @include flex(center, center);
-//       flex-direction: column;
-//       padding: 1rem 0;
-//       font-size: 1.4rem;
-//       color: rgba($black, 0.6);
-//       line-height: 1.6rem;
-//       text-transform: uppercase;
-//       input {
-//         padding: 0.6rem;
-//         border: 1px solid $grey;
-//         border-radius: 6px;
-//       }
-//     }
+
+.signup-screen {
+  @include flex(center, center);
+  flex-direction: column;
+  form {
+    @include flex(center, center);
+    flex-direction: column;
+    label {
+      @include flex(center, center);
+      flex-direction: column;
+      padding: 1rem 0;
+      font-size: 1.4rem;
+      line-height: 1.6rem;
+      text-transform: uppercase;
+      input {
+        padding: 0.6rem;
+        border-radius: 6px;
+      }
+    }
 //     button {
 //       background-color: $red;
 //       margin-bottom: 2rem;
@@ -94,4 +115,7 @@ button {
 
 
 
-
+  }
+}
+  }
+}
