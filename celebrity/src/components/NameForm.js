@@ -23,19 +23,27 @@ const sendScore = async () => {
  await
  axios
  .post(`https://celebs-dead-or-alive.herokuapp.com/auth/register`, {
-   
+  name: playerName,
+  email: `default{Date.now()}@DelayNode.com`,
+  password: 'default'
  })
-    }
+ localStorage.setItem('id', newPlayer.data.id)
+ await
+ axios
+ .post(`https://celebs-dead-or-alive.herokuapp.com/users/:id%E2%80%99-`, {
+   player_id: newPalyer.data.id,
+   score: props.score
+ })
+}
+  }
+  catch  ( error ) {
+    alert("Could not save the score")
+    console.log('Something did not work', error)
+  }
   
+}
 
-
-
-
-
-
-
-
-    const handleSubmit = (e) => {
+ const handleSubmit = (e) => {
         e.preventDefault()
         localStorage.setItem('SignUpCred', playerName)
         setPlayerName('')
