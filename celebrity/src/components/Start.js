@@ -11,14 +11,14 @@ const StartScreen = () => {
         <h1>Dead<br /> Or
         <br /> Alive</h1>
         <h3>
-         Test your knowledge of Celebrity's Dead or Alive
+          Test your knowledge of Celebrity's Dead or Alive
         </h3>
         <p>Identify of which famous Celebritys are alive or are dead</p>
       </header>
       <div className='buttons'>
         <Button buttonText={'START PLAYING'} pathName={'play'} />
-        <Button buttonText={'signup'} pathName={'signup'} /> : null}
-        <Button buttonText={'login'} pathName={'login'} /> : null}
+        <Button buttonText={'signup'} pathName={'signup'} />
+        <Button buttonText={'login'} pathName={'login'} />
       </div>
     </div>
   )
