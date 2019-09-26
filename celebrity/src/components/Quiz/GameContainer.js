@@ -18,7 +18,7 @@ export default function GameContainer(props) {
   const [celebList, setCelebList] = useState([]);
   const [currentCard, setCurrentCard] = useState({});
   const [gameTimer, setGameTimer] = useState(0);
-  const API = 'https://celebs-dead-or-alive.herokuapp.com/celebs';
+  const API = `https://celebs-dead-or-alive.herokuapp.com/celebs`;
   const [ id, setID ] = useState(Math.floor(Math.random() * (51 - 1 + 1)) + 1);
   const [limitQs, setLimitQs] = useState(0); 
 
