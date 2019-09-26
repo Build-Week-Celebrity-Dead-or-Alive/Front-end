@@ -5,24 +5,11 @@ import { Switch, Route } from "react-router-dom";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Start from "./components/Start";
+import "./App.css";
 import End from "./components/End";
 import GameContainer from "./components/Quiz/GameContainer";
-import GameScreen from './components/Game'
+
 function App() {
-
-  // const [ Celebrity, setCelebrity] = useState([]);
-
-
-  // useEffect(() => {
-  //   axiosWithAuth()
-  //     .get('https://celebs-dead-or-alive.herokuapp.com/celebs')
-  //     .then(res => {
-  //       console.log(res)
-  //       setCelebrity(res.data)
-  //     }) 
-  //     .catch(err => console.log(err)) 
-  // }, []);
-
   return (
     <div className="App">
       <NavBar />
@@ -30,10 +17,9 @@ function App() {
         <Switch>
           <Route exact path="/" component={Start} />
           <Route path="/login" component={Login} />
-          <Route path='/play' component={GameScreen} />
           <Route path="/signup" component={Signup} />
           <Route exact path="/end" component={End} />
-          {/* <Route exact path="/play" component={GameContainer} /> */}
+          <Route exact path="/play" component={GameContainer} />
         </Switch>
       </div>
     </div>
