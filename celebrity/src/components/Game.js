@@ -91,7 +91,7 @@ const GameScreen = () => {
 
 
   const [data, setData] = useState({})
-  const [id, setId] = useState(Math.floor(Math.random() * 65 + 1))
+  const [id, setId] = useState()
   const [score, setScore] = useState(0)
   const [guesses, setGuesses] = useState(0)
  const [time, setTime] = useState(false)
