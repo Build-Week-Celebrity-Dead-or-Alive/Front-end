@@ -87,6 +87,13 @@ const StyledQuizDisplay = styled.div`
   }
 `;
 
+let arr = [];
+let i = 0;
+while (arr.length < 21) {
+  var r = Math.floor(Math.random() * 52) + 1;
+  if (arr.indexOf(r) === -1) arr.push(r);
+}
+
 export default function QuizDisplay(props) {
   const {
     currentCard,
@@ -108,30 +115,33 @@ export default function QuizDisplay(props) {
   function secondsToMinutes(seconds) {
     let minutes = Math.floor(seconds / 60);
     let secondsRemainder = Math.floor(seconds % 60);
-    let minStr = minutes.toString().padStart(2, '0');
-    let secRStr = secondsRemainder.toString().padStart(2, '0');
-    return (`${minStr}:${secRStr}`);
+    let minStr = minutes.toString().padStart(2, "0");
+    let secRStr = secondsRemainder.toString().padStart(2, "0");
+    return `${minStr}:${secRStr}`;
   }
 
   function nextCard(eTargetId) {
     let answer = checkAnswer(eTargetId);
-    setQuizHistory(quizHistory.concat({ name: currentCard.name, correct: answer }));
-    setCurrentAnswer(answer ? 'correct' : 'incorrect');
-    if (limitQs < 20) {
-      setID(Math.floor(Math.random() * (51 - 1 + 1)) + 1);
+    setQuizHistory(
+      quizHistory.concat({ name: currentCard.name, correct: answer })
+    );
+    setCurrentAnswer(answer ? "correct" : "incorrect");
+    if (limitQs < 20 && i < 20) {
+      setID(arr[i]);
     } else {
       gameOverModal.style.display = "block";
     }
   }
 
   function checkAnswer(answer) {
-    return (currentCard.isDead === (answer === 'dead') ? true : false);
+    return currentCard.isDead === (answer === "dead") ? true : false;
   }
 
   const onBtnClick = e => {
+    i++;
     setLimitQs(limitQs + 1);
     nextCard(e.target.id);
-  }
+  };
 
   return (
     <StyledQuizDisplay>

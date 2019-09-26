@@ -13,8 +13,7 @@ const StyledQuizHistory = styled.div`
 
 function QuizHistory(props) {
 
-    const dummyHistoryData = [{ name: 'Tupac Shakur', correct: true }, { name: 'Biggie Smalls', correct: false }]
-    const { quizHistory, mockCelebList, getCurrentScore } = props;
+    const { quizHistory, getCurrentScore } = props;
 
 
     return (

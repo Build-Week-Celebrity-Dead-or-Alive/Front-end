@@ -22,6 +22,8 @@ export default function GameContainer(props) {
   const API = 'https://celebs-dead-or-alive.herokuapp.com/celebs';
   const [id, setID] = useState(Math.floor(Math.random() * (51 - 1 + 1)) + 1);
   const [limitQs, setLimitQs] = useState(0);
+  const [loading, setLoading] = useState(true);
+
 
   // Instantiate the timer
   /*   useEffect(() => {
@@ -49,6 +51,7 @@ export default function GameContainer(props) {
       .then(res => {
         setCurrentCard(res.data[`${id}`]);
         //   res.data.map(celeb => setCelebList(celebList.push(celeb)))
+        setLoading(false);
       })
       .catch(err => {
         debugger
@@ -57,7 +60,7 @@ export default function GameContainer(props) {
 
   return (
     <StyledGameContainer>
-      <CelebrityCard currentCard={currentCard} />
+      <CelebrityCard currentCard={currentCard}  loading={loading}/>
       <QuizDisplay
         currentCard={currentCard}
         setCurrentCard={setCurrentCard}
