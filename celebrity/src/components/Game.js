@@ -4,7 +4,7 @@ import axios from 'axios';
 import CelebCard from './CelebCard';
 import Timebar from './Timer';
 import QuizDisplay from "../components/Quiz/QuizDisplay";
-// import QuizHistory from "../components/Quiz/QuizHistory";
+import QuizHistory from "../components/Quiz/QuizHistory";
 import styled from "styled-components";
 
 
@@ -14,7 +14,8 @@ const StyledQuizDisplay = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 2rem;
+  margin-left: 3rem;
+  margin-top: -22%;
   .flashcard {
     background-color: transparent;
     width: 300px;
@@ -113,7 +114,7 @@ const GameScreen = () => {
   }, [id])
 
   useEffect(() => {
-    const timer = setTimeout(() => setTime(true), 1500000)
+    const timer = setTimeout(() => setTime(true), 15000)
     return () => clearTimeout(timer)
   }, [])
 
@@ -159,6 +160,7 @@ const GameScreen = () => {
 
 
 
+
   return (
     <div className='play-screen'>
       <Route
@@ -173,6 +175,7 @@ const GameScreen = () => {
                 <h3>Correct Guesses:&nbsp;&nbsp; {score}</h3>
               </div>
               <Timebar />
+              
               {data ? <CelebCard data={data} /> : <div>Loading...</div>}
 
          {/* <QuizDisplay
@@ -184,9 +187,7 @@ const GameScreen = () => {
             currentAnswer={currentAnswer}
             setCurrentAnswer={setCurrentAnswer}
             /> */}
-
-
-
+ 
 
     <StyledQuizDisplay>
       <div className="flashcard">
@@ -212,9 +213,26 @@ const GameScreen = () => {
               >
                 Alive
               </button>
+              
       </div>
     </StyledQuizDisplay>
   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -251,7 +269,7 @@ const GameScreen = () => {
     </div>
   
   )
-  }
+        }
 export default GameScreen
 
 
