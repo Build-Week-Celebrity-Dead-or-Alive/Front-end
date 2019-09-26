@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import axios from 'axios';
 import CelebCard from './CelebCard';
-import Timebar from './Timer';
+// import Timebar from './Timer';
 import QuizDisplay from "../components/Quiz/QuizDisplay";
 import QuizHistory from "../components/Quiz/QuizHistory";
 import styled from "styled-components";
@@ -171,7 +171,7 @@ const GameScreen = () => {
                 <h3>Guesses:&nbsp;&nbsp; {guesses}</h3>
                 <h3>Correct Guesses:&nbsp;&nbsp; {score}</h3>
               </div>
-              <Timebar />
+              {/* <Timebar /> */}
               
               {data ? <CelebCard data={data} /> : <div>Loading...</div>}
 
