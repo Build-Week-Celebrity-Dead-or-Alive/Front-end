@@ -1,0 +1,11 @@
+@mixin flex($j, $a) {
+  display: flex;
+  justify-content: $j;
+  align-items: $a;
+}
+
+@mixin font($size, $lh) {
+  font-family: 'Ropa Sans', sans-serif;
+  font-size: $size;
+  line-height: $lh;
+}

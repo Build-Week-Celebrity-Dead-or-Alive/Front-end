@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import End from "../End";
+// import End from "../End";
 
 const StyledQuizDisplay = styled.div`
   width: 30vw;

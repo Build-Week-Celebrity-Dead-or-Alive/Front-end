@@ -2,12 +2,14 @@ import React from 'react'
 import Button from './Button'
 
 const StartScreen = () => {
-  let isNameHere = window.localStorage.getItem("SignUp") || ""
 
+  let isNameHere = window.localStorage.getItem("SignUpCred") || ""
+ 
+  
   return (
     <div className='start-screen'>
       <header className='start-content'>
-        {/* {isNameHere === "" ? null : <h2>Welcome {isNameHere}!</h2>} */}
+        {isNameHere === "" ? null : <h2>Welcome {isNameHere}!</h2>}
         <h1>Dead<br /> Or
         <br /> Alive</h1>
         <h3>

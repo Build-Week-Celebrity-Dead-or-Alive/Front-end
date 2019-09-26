@@ -2,26 +2,30 @@ import React, { useState } from 'react'
 import Button from './Button'
 
 const SignupScreen = () => {
-  const [signUp, setsignUp] = useState({
+  const [signUpCred, setsignUpCred] = useState({
     username: '',
     email: '',
     password: ''
   })
 
   const handleChange = (e) => {
-    setsignUp({ ...signUp, [e.target.name]: e.target.value })
+    setsignUpCred({ ...signUpCred, [e.target.name]: e.target.value })
   }
 
-  window.localStorage.setItem('SignUpCred', signUp.username)
+  window.localStorage.setItem('SignUpCred', signUpCred.username)
 
   return (
     <div className='signup-screen'>
+<h1>Dead<br /> Or
+        <br /> Alive</h1>
+
       <form>
         <label htmlFor='username'>
+
           Name
           <input
             placeholder='username'
-            value={signUp.username}
+            value={signUpCred.username}
             name='username'
             onChange={handleChange}
           />
@@ -31,7 +35,7 @@ const SignupScreen = () => {
           <input
             type='email'
             placeholder='email'
-            value={signUp.email}
+            value={signUpCred.email}
             name='email'
             onChange={handleChange}
           />
@@ -41,7 +45,7 @@ const SignupScreen = () => {
           <input
             type='password'
             placeholder='password'
-            value={signUp.password}
+            value={signUpCred.password}
             name='password'
             onChange={handleChange}
           />
