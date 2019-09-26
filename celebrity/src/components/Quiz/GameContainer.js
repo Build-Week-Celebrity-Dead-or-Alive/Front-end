@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import CelebrityCard from "./CelebrityCard";
 import QuizDisplay from "./QuizDisplay";
 import QuizHistory from "./QuizHistory";
@@ -12,23 +12,45 @@ const StyledGameContainer = styled.div`
 `;
 
 export default function GameContainer(props) {
-  
+
   const [currentAnswer, setCurrentAnswer] = useState("");
   const [quizHistory, setQuizHistory] = useState([]);
   const [celebList, setCelebList] = useState([]);
   const [currentCard, setCurrentCard] = useState({});
   const [gameTimer, setGameTimer] = useState(0);
-  const API = `https://celebs-dead-or-alive.herokuapp.com/celebs`;
-  const [ id, setID ] = useState(Math.floor(Math.random() * (51 - 1 + 1)) + 1);
-  const [limitQs, setLimitQs] = useState(0); 
+  const [gameActive, setGameActive] = useState(true);
+  const API = 'https://celebs-dead-or-alive.herokuapp.com/celebs';
+  const [id, setID] = useState(Math.floor(Math.random() * (51 - 1 + 1)) + 1);
+  const [limitQs, setLimitQs] = useState(0);
+  const [loading, setLoading] = useState(true);
 
-  // Instantiate the timer
-  useEffect(() => {
-    let timer = setInterval(() => {
-      setGameTimer(gameTimer => gameTimer + 1);
-    }, 1000);
-    return () => clearInterval(timer);
-  })
+
+
+  useInterval(() => {
+    if (gameActive) {
+      setGameTimer(gameTimer + 1);
+    }
+  }, 1000);
+
+  function useInterval(callback, delay) {
+    const savedCallback = useRef();
+
+    // Remember the latest function.
+    useEffect(() => {
+      savedCallback.current = callback;
+    }, [callback]);
+
+    // Set up the interval.
+    useEffect(() => {
+      function tick() {
+        savedCallback.current();
+      }
+      if (delay !== null) {
+        let id = setInterval(tick, delay);
+        return () => clearInterval(id);
+      }
+    }, [delay]);
+  }
 
   // get players current score
   function getCurrentScore() {
@@ -36,25 +58,26 @@ export default function GameContainer(props) {
     // let total_count = celebList.length;
     let total_count = 20;
     quizHistory.forEach(element => {
-        true_count += element.correct ? 1 : 0
+      true_count += element.correct ? 1 : 0
     })
     return (`${true_count}/${total_count}`);
-}
+  }
 
-    useEffect(() => {
-      axios.get(API)
+  useEffect(() => {
+    axios.get(API)
       .then(res => {
-          setCurrentCard(res.data[`${id}`]);
+        setCurrentCard(res.data[`${id}`]);
         //   res.data.map(celeb => setCelebList(celebList.push(celeb)))
+        setLoading(false);
       })
       .catch(err => {
-          debugger
+        debugger
       })
-    },[id]);
+  }, [id]);
 
   return (
     <StyledGameContainer>
-      <CelebrityCard currentCard={currentCard} />
+      <CelebrityCard currentCard={currentCard}  loading={loading}/>
       <QuizDisplay
         currentCard={currentCard}
         setCurrentCard={setCurrentCard}
@@ -69,8 +92,9 @@ export default function GameContainer(props) {
         id={id}
         limitQs={limitQs}
         setLimitQs={setLimitQs}
+        setGameActive={setGameActive}
       />
-      <QuizHistory quizHistory={quizHistory} getCurrentScore={getCurrentScore}/>
+      <QuizHistory quizHistory={quizHistory} getCurrentScore={getCurrentScore} />
     </StyledGameContainer>
   );
 }

@@ -13,16 +13,17 @@ const StyledCelebCard = styled.div`
         width: 80%;
         height: 20rem;
     }
+    border-radius: .3rem;
 `;
 
-function CelebrityCard({ currentCard }) {
+function CelebrityCard({ currentCard,loading }) {
 
-    return (
+    return ( !loading ?
         <StyledCelebCard>
             <img src={currentCard.image_url} alt={`${currentCard.name}`} />
             <h2>{currentCard.name}</h2>
             <p>{currentCard.info}</p>
-        </StyledCelebCard>
+        </StyledCelebCard> : <p>loading...</p>
     )
 }
 

@@ -12,6 +12,7 @@ const StyledQuizDisplay = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-radius: .3rem;
   margin-left: 2rem;
   .flashcard {
     background-color: transparent;
@@ -87,6 +88,13 @@ const StyledQuizDisplay = styled.div`
   }
 `;
 
+let arr = [];
+let i = 0;
+while (arr.length < 21) {
+  var r = Math.floor(Math.random() * 52) + 1;
+  if (arr.indexOf(r) === -1) arr.push(r);
+}
+
 export default function QuizDisplay(props) {
   const {
     currentCard,
@@ -100,7 +108,8 @@ export default function QuizDisplay(props) {
     gameTimer,
     limitQs,
     setLimitQs,
-    setID
+    setID,
+    setGameActive
   } = props;
 
   const gameOverModal = document.querySelector("#gameOverModal");
@@ -108,63 +117,33 @@ export default function QuizDisplay(props) {
   function secondsToMinutes(seconds) {
     let minutes = Math.floor(seconds / 60);
     let secondsRemainder = Math.floor(seconds % 60);
-    let minStr = minutes.toString().padStart(2, '0');
-    let secRStr = secondsRemainder.toString().padStart(2, '0');
-    return (`${minStr}:${secRStr}`);
+    let minStr = minutes.toString().padStart(2, "0");
+    let secRStr = secondsRemainder.toString().padStart(2, "0");
+    return `${minStr}:${secRStr}`;
   }
 
+  function nextCard(eTargetId) {
+    let answer = checkAnswer(eTargetId);
+    setQuizHistory(
+      quizHistory.concat({ name: currentCard.name, correct: answer })
+    );
+    setCurrentAnswer(answer ? "correct" : "incorrect");
+    if (limitQs < 20 && i < 20) {
+      setID(arr[i]);
+    } else {
+      setGameActive(false);
+      gameOverModal.style.display = "block";
+    }
+  }
+
+  function checkAnswer(answer) {
+    return currentCard.isDead === (answer === "dead") ? true : false;
+  }
 
   const onBtnClick = e => {
+    i++;
     setLimitQs(limitQs + 1);
-    console.log(limitQs);
-    if (e.target.id === "dead") {
-      if (currentCard.isDead) {
-        setQuizHistory(
-          quizHistory.concat({ name: currentCard.name, correct: true })
-        );
-        setCurrentAnswer("correct");
-        if (limitQs < 20) {
-          setID(Math.floor(Math.random() * (51 - 1 + 1)) + 1);
-        } else {
-          gameOverModal.style.display = "block";
-        }
-      } else {
-        setQuizHistory(
-          quizHistory.concat({ name: currentCard.name, correct: false })
-        );
-        setCurrentAnswer("incorrect");
-        if (limitQs < 20) {
-          setID(Math.floor(Math.random() * (51 - 1 + 1)) + 1);
-        } else {
-          gameOverModal.style.display = "block";
-        }
-      }
-    } else {
-      if (!currentCard.isDead) {
-        setQuizHistory(
-          quizHistory.concat({ name: currentCard.name, correct: true })
-        );
-        setCurrentAnswer("correct");
-        if (limitQs < 20) {
-          setID(Math.floor(Math.random() * (51 - 1 + 1)) + 1);
-        } else {
-          gameOverModal.style.display = "block";
-        }
-      } else {
-        setQuizHistory(
-          quizHistory.concat({ name: currentCard.name, correct: false })
-        );
-        setCurrentAnswer("incorrect");
-        if (limitQs < 20) {
-          setID(Math.floor(Math.random() * (51 - 1 + 1)) + 1);
-        } else {
-          gameOverModal.style.display = "block";
-        }
-      }
-    }
-
-    document.querySelector(".flashcard-inner").style.transform =
-      "rotateY(180deg)";
+    nextCard(e.target.id);
   };
 
   return (
@@ -193,6 +172,7 @@ export default function QuizDisplay(props) {
         <div class="modal-content">
           <h1>GAME OVER!!</h1>
           <p>Score:{getCurrentScore()}</p>
+          <p>Time: {secondsToMinutes(gameTimer)}</p>
           <button
             buttonText={"PLAY AGAIN"}
             onClick={() => window.location.reload()}
