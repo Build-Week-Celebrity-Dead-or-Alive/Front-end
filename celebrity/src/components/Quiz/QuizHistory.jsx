@@ -12,7 +12,6 @@ const StyledQuizHistory = styled.div`
 `;
 
 function QuizHistory(props) {
-
     const { quizHistory, getCurrentScore } = props;
 
 

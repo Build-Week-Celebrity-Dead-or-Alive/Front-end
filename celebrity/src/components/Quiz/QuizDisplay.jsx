@@ -12,6 +12,7 @@ const StyledQuizDisplay = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-radius: .3rem;
   margin-left: 2rem;
   .flashcard {
     background-color: transparent;
@@ -107,7 +108,8 @@ export default function QuizDisplay(props) {
     gameTimer,
     limitQs,
     setLimitQs,
-    setID
+    setID,
+    setGameActive
   } = props;
 
   const gameOverModal = document.querySelector("#gameOverModal");
@@ -129,6 +131,7 @@ export default function QuizDisplay(props) {
     if (limitQs < 20 && i < 20) {
       setID(arr[i]);
     } else {
+      setGameActive(false);
       gameOverModal.style.display = "block";
     }
   }
@@ -169,6 +172,7 @@ export default function QuizDisplay(props) {
         <div class="modal-content">
           <h1>GAME OVER!!</h1>
           <p>Score:{getCurrentScore()}</p>
+          <p>Time: {secondsToMinutes(gameTimer)}</p>
           <button
             buttonText={"PLAY AGAIN"}
             onClick={() => window.location.reload()}
