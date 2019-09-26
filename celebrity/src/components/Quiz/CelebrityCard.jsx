@@ -13,6 +13,7 @@ const StyledCelebCard = styled.div`
         width: 80%;
         height: 20rem;
     }
+    border-radius: .3rem;
 `;
 
 function CelebrityCard({ currentCard }) {

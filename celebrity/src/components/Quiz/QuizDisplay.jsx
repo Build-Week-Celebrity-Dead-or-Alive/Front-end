@@ -12,6 +12,7 @@ const StyledQuizDisplay = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-radius: .3rem;
   margin-left: 2rem;
   .flashcard {
     background-color: transparent;
