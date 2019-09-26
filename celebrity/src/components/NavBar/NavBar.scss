@@ -1,6 +1,4 @@
 @import 'mixins';
-
-
 html {
   background: lightgreen;
 }
@@ -107,10 +105,6 @@ nav {
   }
 }
 
-
-
-
-
 .progress {
   margin: 5px;
   padding: 6px;
@@ -139,46 +133,6 @@ nav {
   from { width: 0 }
   to   { width: 100% }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// .login-screen{
-// @include flex(center, center);
-//   flex-direction: column;
-//   form {
-//     @include flex(center, center);
-//     flex-direction: column;
-//     label {
-//       @include flex(center, center);
-//       flex-direction: column;
-//       padding: 1rem 0;
-//       font-size: 1.4rem;
-//       line-height: 1.6rem;
-//       text-transform: uppercase;
-//       input {
-//         padding: 0.6rem;
-//         border-radius: 6px;
-//       }
-//     }
 
 
 
