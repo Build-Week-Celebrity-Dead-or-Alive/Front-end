@@ -17,8 +17,8 @@ const StartScreen = () => {
       </header>
       <div className='buttons'>
         <Button buttonText={'START PLAYING'} pathName={'play'} />
-        <Button buttonText={'signup'} pathName={'signup'} /> : null}
-        <Button buttonText={'login'} pathName={'login'} /> : null}
+        <Button buttonText={'signup'} pathName={'signup'} /> 
+        <Button buttonText={'login'} pathName={'login'} /> 
       </div>
     </div>
   )

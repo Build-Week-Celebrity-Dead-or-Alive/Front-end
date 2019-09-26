@@ -39,9 +39,8 @@ class NavBar extends Component {
 
  
       <nav>
-         <Link to='/'>HOME</Link>
-         <Link to='/userscores'>Score</Link>
-         <Link to='/leaderboard'>LeaderBoard</Link>
+         <Link to='/'>Home</Link>
+         <Link to='/signup'>Signup</Link>
       </nav>
   
               </Menu.Item>
@@ -66,15 +65,15 @@ class NavBar extends Component {
                   > */}
 
               {/* </Menu.Item> */}
-              <Menu.Item
+              {/* <Menu.Item
                 as={Link}
                 name="signup"
                 to="/signup"
                 active={activeItem === "Signup"}
                 onClick={this.handleItemClick}
-              >
+              > */}
                 {/* Signup */}
-              </Menu.Item>
+              {/* </Menu.Item> */}
             </Menu.Menu>
           </Menu>
         </Segment>

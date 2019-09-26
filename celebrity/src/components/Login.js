@@ -12,7 +12,7 @@ const LoginScreen = () => {
   window.localStorage.setItem("LoginCred", JSON.stringify(loginCred))
 
   return (
-    <div className='login-screen'>
+    <div className='signup-screen'>
       <form>
         <label htmlFor='email'>
           Email
