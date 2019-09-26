@@ -1,18 +1,16 @@
-import React, {useEffect, useState} from 'react';
-import './App.css';
-import NavBar from './components/NavBar/NavBar.js';
-import { Switch, Route} from 'react-router-dom';
+import React from "react";
+import "./App.css";
+import NavBar from "./components/NavBar/NavBar.js";
+import { Switch, Route } from "react-router-dom";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
-import Start from './components/Start';
-import './App.css';
-import End from './components/End'
-
-// import { axiosWithAuth } from './Auth/axiosWithAuth.js';
-
+import Start from "./components/Start";
+import End from "./components/End";
+import GameContainer from "./components/Quiz/GameContainer";
+import GameScreen from './components/Game'
 function App() {
 
-  const [ Celebrity, setCelebrity] = useState([]);
+  // const [ Celebrity, setCelebrity] = useState([]);
 
 
   // useEffect(() => {
@@ -27,19 +25,18 @@ function App() {
 
   return (
     <div className="App">
-     <NavBar />
-    <div className="content">
-
-     
-      <Switch>
-        <Route exact path='/' component={Start} />
-        <Route path="/login" component={Login} /> 
-        <Route path="/signup" component={Signup} /> 
-        <Route exact path='/end' component={End} />
-      </Switch>
-  
+      <NavBar />
+      <div className="content">
+        <Switch>
+          <Route exact path="/" component={Start} />
+          <Route path="/login" component={Login} />
+          <Route path='/play' component={GameScreen} />
+          <Route path="/signup" component={Signup} />
+          <Route exact path="/end" component={End} />
+          {/* <Route exact path="/play" component={GameContainer} /> */}
+        </Switch>
+      </div>
     </div>
-  </div>
   );
 }
 

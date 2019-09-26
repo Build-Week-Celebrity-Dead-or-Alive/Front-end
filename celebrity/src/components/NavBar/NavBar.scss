@@ -5,9 +5,13 @@ html {
   background: lightgreen;
 }
 
+h1 {
+  padding:5%;
+}
 
 div.header.item.headliner {
     display: flex;
+    flex-direction: row;
     font-size: 1.5rem;
     background: black;
     color: azure;
@@ -37,11 +41,11 @@ button {
     background: black;
     text-decoration: none;
     font-size: 1.6rem;
-    // cursor: pointer;
+    cursor: pointer;
   }
 
   button:hover {
-    box-shadow: 2px 2px 2px;
+    box-shadow: 0 0 3px 3px
   }
 
   form {
@@ -54,11 +58,46 @@ button {
     margin-left: 0%;
 }
 
+
+
+div.sc-ifAKCX.cucAih {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  background-color: black;
+  color: white;
+  width: 29vw;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 3rem;
+  margin-left: 51%;
+}
+
+
+
+h1 {
+  width:100%;
+  margin-left: -24.0px;
+}
+
+
+header.start-content {
+  margin-left: 3.5%;
+}
+
+
+
 nav {
-  background-color: red;
+  // background-color: red;
   vertical-align: text-bottom;
-  padding: 1rem;
-  width: 100%;
+  // padding: 1rem;
+  // width: 100%;
   a {
     font-size: 1.6rem;
     color: white;
