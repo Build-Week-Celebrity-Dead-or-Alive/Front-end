@@ -100,7 +100,8 @@ export default function QuizDisplay(props) {
     gameTimer,
     limitQs,
     setLimitQs,
-    setID
+    setID,
+    setGameActive
   } = props;
 
   const gameOverModal = document.querySelector("#gameOverModal");
@@ -120,6 +121,7 @@ export default function QuizDisplay(props) {
     if (limitQs < 20) {
       setID(Math.floor(Math.random() * (51 - 1 + 1)) + 1);
     } else {
+      setGameActive(false);
       gameOverModal.style.display = "block";
     }
   }
@@ -159,6 +161,7 @@ export default function QuizDisplay(props) {
         <div class="modal-content">
           <h1>GAME OVER!!</h1>
           <p>Score:{getCurrentScore()}</p>
+          <p>Time: {secondsToMinutes(gameTimer)}</p>
           <button
             buttonText={"PLAY AGAIN"}
             onClick={() => window.location.reload()}
