@@ -61,119 +61,119 @@ const StyledQuizDisplay = styled.div`
 `;
 
 
-// const GameScreen = () => {
-//   const randomID = () => {
-//     const onBtnClick = e => {
-//       if (e.target.id === "dead" && currentCard.isDead) {
-//         setQuizHistory(
-//           quizHistory.concat({ name: currentCard.name, correct: true })
-//         );
-//         setCurrentAnswer("correct");
-//         if (currentCard.id <= randomID.length) {
-//           setCurrentCard(randomID[currentCard.id + 1]);
-//         } else {
-//           console.log("game ova");
-//         }
-//       } else {
-//         setQuizHistory(
-//           quizHistory.concat({ name: currentCard.name, correct: false })
-//         );
-//         setCurrentAnswer("incorrect");
-//       }
+const GameScreen = () => {
+  const randomID = () => {
+    const onBtnClick = e => {
+      if (e.target.id === "dead" && currentCard.isDead) {
+        setQuizHistory(
+          quizHistory.concat({ name: currentCard.name, correct: true })
+        );
+        setCurrentAnswer("correct");
+        if (currentCard.id <= randomID.length) {
+          setCurrentCard(randomID[currentCard.id + 1]);
+        } else {
+          console.log("game ova");
+        }
+      } else {
+        setQuizHistory(
+          quizHistory.concat({ name: currentCard.name, correct: false })
+        );
+        setCurrentAnswer("incorrect");
+      }
   
-//       document.querySelector(".flashcard-inner").style.transform =
-//         "rotateY(180deg)";
-//     };
+      document.querySelector(".flashcard-inner").style.transform =
+        "rotateY(180deg)";
+    };
     
-//     return Math.floor(Math.random() * 80 + 1)
-//   }
+    return Math.floor(Math.random() * 80 + 1)
+  }
 
 
-//   const [data, setData] = useState({})
-//   const [id, setId] = useState(Math.floor(Math.random() * 80 + 1))
-//   const [score, setScore] = useState(0)
-//   const [guesses, setGuesses] = useState(0)
-//  const [time, setTime] = useState(false)
-//   const [wrongDead, setWrongDead] = useState(false)
-//   const [Alive, setAlive] = useState(false)
+  const [data, setData] = useState({})
+  const [id, setId] = useState(Math.floor(Math.random() * 80 + 1))
+  const [score, setScore] = useState(0)
+  const [guesses, setGuesses] = useState(0)
+ const [time, setTime] = useState(false)
+  const [wrongDead, setWrongDead] = useState(false)
+  const [Alive, setAlive] = useState(false)
 
 
-//   useEffect(() => {
-//     axios
-//       .get(
-//         `https://celebs-dead-or-alive.herokuapp.com/celebs/${id}`
-//       )
-//       .then((e) => {
-//         e.status ? setData(e.data) : console.log("This shouldn't show up")
-//       })
-//       .catch((err) => {
-//         console.log('Something isnt working', err)
-//         setId(randomID())
-//       })
-//   }, [id])
+  useEffect(() => {
+    axios
+      .get(
+        `https://celebs-dead-or-alive.herokuapp.com/celebs/${id}`
+      )
+      .then((e) => {
+        e.status ? setData(e.data) : console.log("This shouldn't show up")
+      })
+      .catch((err) => {
+        console.log('Something isnt working', err)
+        setId(randomID())
+      })
+  }, [id])
 
-//   useEffect(() => {
-//     const timer = setTimeout(() => setTime(true), 1500000)
-//     return () => clearTimeout(timer)
-//   }, [])
+  useEffect(() => {
+    const timer = setTimeout(() => setTime(true), 1500000)
+    return () => clearTimeout(timer)
+  }, [])
 
  
-//   const isDead = (deathCheck) => {
-//     if (deathCheck > 0) {
+  const isDead = (deathCheck) => {
+    if (deathCheck > 0) {
    
-//       setScore(score + 1)
-//       setWrongDead(false)
-//     } else {
-//       setWrongDead(true)
-//     }
+      setScore(score + 1)
+      setWrongDead(false)
+    } else {
+      setWrongDead(true)
+    }
  
-//     setId(randomID())
-//     setGuesses(guesses + 1)
-//   }
+    setId(randomID())
+    setGuesses(guesses + 1)
+  }
 
-//   //Checks for Alive case on Click
-//   const isAlive = (aliveCheck) => {
-//     if (aliveCheck == 0) {
-//       //true case, reward one point
-//       setScore(score + 1)
-//       setAlive(false)
-//     } else {
-//       setAlive(true)
-//     }
-//     //move to next card
-//     setId(randomID())
-//     setGuesses(guesses + 1)
-//   }
+  //Checks for Alive case on Click
+  const isAlive = (aliveCheck) => {
+    if (aliveCheck == 0) {
+      //true case, reward one point
+      setScore(score + 1)
+      setAlive(false)
+    } else {
+      setAlive(true)
+    }
+    //move to next card
+    setId(randomID())
+    setGuesses(guesses + 1)
+  }
 
-//   window.localStorage.setItem('CorrectGuesses', JSON.stringify(score))
-//   window.localStorage.setItem('TotalGuesses', JSON.stringify(guesses))
-
-
-
-//   const [currentAnswer, setCurrentAnswer] = useState("");
-//   const [quizHistory, setQuizHistory] = useState([]);
-//   const [ celebList, setCelebList ] = useState([]);
-//   const [currentCard, setCurrentCard] = useState([id]);
+  window.localStorage.setItem('CorrectGuesses', JSON.stringify(score))
+  window.localStorage.setItem('TotalGuesses', JSON.stringify(guesses))
 
 
 
+  const [currentAnswer, setCurrentAnswer] = useState("");
+  const [quizHistory, setQuizHistory] = useState([]);
+  const [ celebList, setCelebList ] = useState([]);
+  const [currentCard, setCurrentCard] = useState([id]);
 
 
-//   return (
-//     <div className='play-screen'>
-//       <Route
-//         path='/play'
-//         render={() =>
-//           time ? (
-//             <Redirect to='/end' />
-//           ) : (
-//             <div className='play-content'>
-//               <div className='score-status'>
-//                 <h3>Guesses:&nbsp;&nbsp; {guesses}</h3>
-//                 <h3>Correct Guesses:&nbsp;&nbsp; {score}</h3>
-//               </div>
-//               <Timebar />
-//               {data ? <CelebCard data={data} /> : <div>Loading...</div>}
+
+
+
+  return (
+    <div className='play-screen'>
+      <Route
+        path='/play'
+        render={() =>
+          time ? (
+            <Redirect to='/end' />
+          ) : (
+            <div className='play-content'>
+              <div className='score-status'>
+                <h3>Guesses:&nbsp;&nbsp; {guesses}</h3>
+                <h3>Correct Guesses:&nbsp;&nbsp; {score}</h3>
+              </div>
+              <Timebar />
+              {data ? <CelebCard data={data} /> : <div>Loading...</div>}
 
          {/* <QuizDisplay
             currentCard={currentCard}
@@ -186,31 +186,9 @@ const StyledQuizDisplay = styled.div`
             /> */}
 
 
-{/* const onBtnClick = e => {
-    if (e.target.id === "dead" && currentCard.isDead) {
-      setQuizHistory(
-        quizHistory.concat({ name: currentCard.name, correct: true })
-      );
-      setCurrentAnswer("correct");
-      if (currentCard.id <= mockCelebList.length) {
-        setCurrentCard(mockCelebList[currentCard.id + 1]);
-      } else {
-        console.log("game ova");
-      }
-    } else {
-      setQuizHistory(
-        quizHistory.concat({ name: currentCard.name, correct: false })
-      );
-      setCurrentAnswer("incorrect");
-    }
 
-    document.querySelector(".flashcard-inner").style.transform =
-      "rotateY(180deg)";
-  };
 
- */}
-
-    <StyledQuizDisplay>
+    {/* <StyledQuizDisplay>
       <div className="flashcard">
         <div className="flashcard-inner">
           <div className="flashcard-front">
@@ -242,7 +220,7 @@ const StyledQuizDisplay = styled.div`
 
 <StyledQuizDisplay>
 
-{/* <div className="flashcard">
+<div className="flashcard">
         <div className="flashcard-inner">
           <div className="flashcard-front">
             <h1>?</h1>
@@ -264,7 +242,7 @@ const StyledQuizDisplay = styled.div`
                 className={Alive ? 'wrong' : ''}
               >
                 Alive
-              </button> */}
+              </button>
               </StyledQuizDisplay>
             </div>
           )
@@ -274,7 +252,7 @@ const StyledQuizDisplay = styled.div`
   
   )
   }
-export default GameScreen
+export default GameScreen */}
 
 
 
