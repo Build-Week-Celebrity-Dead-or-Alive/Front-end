@@ -8,6 +8,7 @@ import axios from 'axios';
 const StyledGameContainer = styled.div`
   display: flex;
   justify-content: space-around;
+  padding-top: 15vh;
 `;
 
 export default function GameContainer(props) {
@@ -58,8 +59,10 @@ export default function GameContainer(props) {
   const [currentAnswer, setCurrentAnswer] = useState("");
   const [quizHistory, setQuizHistory] = useState([]);
   const [celebList, setCelebList] = useState([]);
-  const [currentCard, setCurrentCard] = useState(mockCelebList[0]);
+  const [currentCard, setCurrentCard] = useState({});
   const [gameTimer, setGameTimer] = useState(0);
+  const API = 'https://celebs-dead-or-alive.herokuapp.com/celebs';
+  const [ id, setID ] = useState(0);
 
   // Instantiate the timer
   useEffect(() => {
@@ -69,17 +72,27 @@ export default function GameContainer(props) {
     return () => clearInterval(timer);
   })
 
+  // get players current score
+  function getCurrentScore() {
+    let true_count = 0;
+    // let total_count = celebList.length;
+    let total_count = 52;
+    quizHistory.forEach(element => {
+        true_count += element.correct ? 1 : 0
+    })
+    return (`${true_count}/${total_count}`);
+}
 
-  //   useEffect(() => {
-  //     axios.get('https://celebs-dead-or-alive.herokuapp.com/celebs')
-  //     .then(res => {
-  //         setCelebList(celebList.push(res.data));
-  //         console.log(celebList)
-  //     })
-  //     .catch(err => {
-  //         debugger
-  //     })
-  //   }, []);
+    useEffect(() => {
+      axios.get(API)
+      .then(res => {
+          setCurrentCard(res.data[`${id}`]);
+          res.data[0].map(celeb => setCelebList(celebList.push(celeb)))
+      })
+      .catch(err => {
+          debugger
+      })
+    },[id]);
 
   return (
     <StyledGameContainer>
@@ -93,9 +106,12 @@ export default function GameContainer(props) {
         setQuizHistory={setQuizHistory}
         currentAnswer={currentAnswer}
         setCurrentAnswer={setCurrentAnswer}
+        getCurrentScore={getCurrentScore}
         gameTimer={gameTimer}
+        setID={setID}
+        id={id}
       />
-      <QuizHistory quizHistory={quizHistory} mockCelebList={mockCelebList} />
+      <QuizHistory quizHistory={quizHistory} mockCelebList={mockCelebList} getCurrentScore={getCurrentScore}/>
     </StyledGameContainer>
   );
 }

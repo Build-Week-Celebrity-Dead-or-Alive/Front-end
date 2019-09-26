@@ -14,15 +14,8 @@ const StyledQuizHistory = styled.div`
 function QuizHistory(props) {
 
     const dummyHistoryData = [{ name: 'Tupac Shakur', correct: true }, { name: 'Biggie Smalls', correct: false }]
-    const { quizHistory, mockCelebList } = props;
-    function getCurrentScore() {
-        let true_count = 0;
-        let total_count = mockCelebList.length;
-        quizHistory.forEach(element => {
-            true_count += element.correct ? 1 : 0
-        })
-        return (`${true_count}/${total_count}`);
-    }
+    const { quizHistory, mockCelebList, getCurrentScore } = props;
+
 
     return (
         <StyledQuizHistory>

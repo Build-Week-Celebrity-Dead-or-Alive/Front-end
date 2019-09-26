@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import End from "../End";
+import { Modal } from "semantic-ui-react";
+import Button from "../Button";
 
 const StyledQuizDisplay = styled.div`
   width: 30vw;
@@ -52,37 +54,99 @@ const StyledQuizDisplay = styled.div`
       color: white;
     }
   }
+  .modal {
+    display: none; /*Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+    .modal-content {
+      background-color: #fefefe;
+      margin: 15% auto; /* 15% from the top and centered */
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%; /* Could be more or less, depending on screen size */
+    }
+  }
+  .game-timer {
+    width: 100px;
+    background-color: white;
+    margin-top: 2rem;
+    border-radius: 10px;
+    height: 3rem;
+    padding-top: 1rem;
+    font-family: "Orbitron", sans-serif;
+    font-size: 3rem;
+  }
 `;
 
 export default function QuizDisplay(props) {
   const {
     currentCard,
     setCurrentCard,
-    mockCelebList,
     quizHistory,
     setQuizHistory,
     currentAnswer,
     setCurrentAnswer,
     celebList,
-    gameTimer
+    getCurrentScore,
+    gameTimer,
+    id,
+    setID
   } = props;
 
+  const gameOverModal = document.querySelector("#gameOverModal");
+
   const onBtnClick = e => {
-    if (e.target.id === "dead" && currentCard.isDead) {
-      setQuizHistory(
-        quizHistory.concat({ name: currentCard.name, correct: true })
-      );
-      setCurrentAnswer("correct");
-      if (currentCard.id <= mockCelebList.length) {
-        setCurrentCard(mockCelebList[currentCard.id + 1]);
+    if (e.target.id === "dead") {
+      if (currentCard.isDead) {
+        setQuizHistory(
+          quizHistory.concat({ name: currentCard.name, correct: true })
+        );
+        setCurrentAnswer("correct");
+        if (currentCard.id < 52) {
+          setID(id + 1);
+        } else {
+          gameOverModal.style.display = "block";
+        }
       } else {
-        console.log("game ova");
+        setQuizHistory(
+          quizHistory.concat({ name: currentCard.name, correct: false })
+        );
+        setCurrentAnswer("incorrect");
+        if (currentCard.id < 52) {
+          setID(id + 1);
+        } else {
+          gameOverModal.style.display = "block";
+        }
       }
     } else {
-      setQuizHistory(
-        quizHistory.concat({ name: currentCard.name, correct: false })
-      );
-      setCurrentAnswer("incorrect");
+      if (!currentCard.isDead) {
+        setQuizHistory(
+          quizHistory.concat({ name: currentCard.name, correct: true })
+        );
+        setCurrentAnswer("correct");
+        if (currentCard.id < 52) {
+          setID(id + 1);
+        } else {
+          gameOverModal.style.display = "block";
+        }
+      } else {
+        setQuizHistory(
+          quizHistory.concat({ name: currentCard.name, correct: false })
+        );
+        setCurrentAnswer("incorrect");
+        if (currentCard.id < 52) {
+          setID(id + 1);
+        } else {
+          gameOverModal.style.display = "block";
+        }
+      }
     }
 
     document.querySelector(".flashcard-inner").style.transform =
@@ -109,8 +173,20 @@ export default function QuizDisplay(props) {
         <button id="alive" onClick={onBtnClick}>
           Alive
         </button>
-        <div className="game-timer">
-          {gameTimer}
+      </div>
+      <div className="game-timer">{gameTimer}</div>
+      <div id="gameOverModal" class="modal">
+        <div class="modal-content">
+          <h1>GAME OVER!!</h1>
+          <p>Score:{getCurrentScore()}</p>
+          <button
+            buttonText={"PLAY AGAIN"}
+            onClick={() => window.location.reload()}
+          >
+            PLAY AGAIN
+          </button>
+          <Button buttonText={"Log In"} pathName={"login"} />
+          <Button buttonText={"Sign Up"} pathName={"signup"} />
         </div>
       </div>
     </StyledQuizDisplay>
