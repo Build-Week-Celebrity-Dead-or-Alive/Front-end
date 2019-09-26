@@ -6,7 +6,7 @@ import CelebCard from './CelebCard';
 import QuizDisplay from "../components/Quiz/QuizDisplay";
 import QuizHistory from "../components/Quiz/QuizHistory";
 import styled from "styled-components";
-
+import clocktimer from './Timer';
 
 const StyledQuizDisplay = styled.div`
   width: 30vw;
@@ -86,7 +86,7 @@ const GameScreen = () => {
         "rotateY(180deg)";
     };
     
-    return Math.floor(Math.random() * 65 + 1)
+    return Math.floor(Math.random() * 52 + 1)
   }
 
 
@@ -97,7 +97,7 @@ const GameScreen = () => {
  const [time, setTime] = useState(false)
   const [wrongDead, setWrongDead] = useState(false)
   const [Alive, setAlive] = useState(false)
-
+  const [Timer] = useState()
 
   useEffect(() => {
     axios
@@ -116,7 +116,47 @@ const GameScreen = () => {
   useEffect(() => {
     const timer = setTimeout(() => setTime(true), 15000)
     return () => clearTimeout(timer)
+    
   }, [])
+
+
+
+  window.onload = function() {
+    var timeLeft = 15;
+    var elem = document.getElementById('some_div');
+    var timerId = setInterval(countdown, 1000);
+    
+    function countdown() {
+        if (timeLeft == -1) {
+            clearTimeout(timerId);
+            doSomething();
+        } else {
+            elem.innerHTML = timeLeft + ' seconds remaining';
+            timeLeft--;
+        }
+    }
+    
+    function doSomething() {
+    }
+  // window.onload = function() {
+  // var timer = new Timer();
+  // timer.start({precision: 'seconds', startValues: {seconds: 90}, target: {seconds: 120}});
+  // ('#startValuesAndTargetExample .values').html(timer.getTimeValues().toString());
+  // timer.addEventListener('secondsUpdated', function (e) {
+  //     ('#startValuesAndTargetExample .values').html(timer.getTimeValues().toString());
+  //     ('#startValuesAndTargetExample .progress_bar').html(('#startValuesAndTargetExample .progress_bar').html() + '.');
+  // });
+  // timer.addEventListener('targetAchieved', function (e) {
+  //     ('#startValuesAndTargetExample .progress_bar').html('COMPLETE!!');
+  // });
+
+  }
+
+
+
+
+
+
 
  
   const isDead = (deathCheck) => {
@@ -157,7 +197,6 @@ const GameScreen = () => {
   const [currentCard, setCurrentCard] = useState([id]);
 
 
-
   return (
     <div className='play-screen'>
       <Route
@@ -166,13 +205,27 @@ const GameScreen = () => {
           time ? (
             <Redirect to='/end' />
           ) : (
+           
             <div className='play-content'>
               <div className='score-status'>
                 <h3>Guesses:&nbsp;&nbsp; {guesses}</h3>
                 <h3>Correct Guesses:&nbsp;&nbsp; {score}</h3>
-              </div>
-              {/* <Timebar /> */}
+               
+                {/* <div id="startValuesAndTargetExample">
+    <div  class="values"></div>
+    <div class="progress_bar">.</div>
+</div>
+                 */}
+
+
+
+
+
+               <div>Time left = <span id="some_div"></span></div>
+               </div>
               
+              {/* <Timebar /> */}
+            
               {data ? <CelebCard data={data} /> : <div>Loading...</div>}
 
        
