@@ -113,59 +113,25 @@ export default function QuizDisplay(props) {
     return (`${minStr}:${secRStr}`);
   }
 
+  function nextCard(eTargetId) {
+    let answer = checkAnswer(eTargetId);
+    setQuizHistory(quizHistory.concat({ name: currentCard.name, correct: answer }));
+    setCurrentAnswer(answer ? 'correct' : 'incorrect');
+    if (limitQs < 20) {
+      setID(Math.floor(Math.random() * (51 - 1 + 1)) + 1);
+    } else {
+      gameOverModal.style.display = "block";
+    }
+  }
+
+  function checkAnswer(answer) {
+    return (currentCard.isDead === (answer === 'dead') ? true : false);
+  }
 
   const onBtnClick = e => {
     setLimitQs(limitQs + 1);
-    console.log(limitQs);
-    if (e.target.id === "dead") {
-      if (currentCard.isDead) {
-        setQuizHistory(
-          quizHistory.concat({ name: currentCard.name, correct: true })
-        );
-        setCurrentAnswer("correct");
-        if (limitQs < 20) {
-          setID(Math.floor(Math.random() * (51 - 1 + 1)) + 1);
-        } else {
-          gameOverModal.style.display = "block";
-        }
-      } else {
-        setQuizHistory(
-          quizHistory.concat({ name: currentCard.name, correct: false })
-        );
-        setCurrentAnswer("incorrect");
-        if (limitQs < 20) {
-          setID(Math.floor(Math.random() * (51 - 1 + 1)) + 1);
-        } else {
-          gameOverModal.style.display = "block";
-        }
-      }
-    } else {
-      if (!currentCard.isDead) {
-        setQuizHistory(
-          quizHistory.concat({ name: currentCard.name, correct: true })
-        );
-        setCurrentAnswer("correct");
-        if (limitQs < 20) {
-          setID(Math.floor(Math.random() * (51 - 1 + 1)) + 1);
-        } else {
-          gameOverModal.style.display = "block";
-        }
-      } else {
-        setQuizHistory(
-          quizHistory.concat({ name: currentCard.name, correct: false })
-        );
-        setCurrentAnswer("incorrect");
-        if (limitQs < 20) {
-          setID(Math.floor(Math.random() * (51 - 1 + 1)) + 1);
-        } else {
-          gameOverModal.style.display = "block";
-        }
-      }
-    }
-
-    document.querySelector(".flashcard-inner").style.transform =
-      "rotateY(180deg)";
-  };
+    nextCard(e.target.id);
+  }
 
   return (
     <StyledQuizDisplay>
