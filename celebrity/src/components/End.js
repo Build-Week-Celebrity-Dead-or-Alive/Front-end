@@ -37,6 +37,8 @@ const EndingScreen = () => {
             <h2>Congrats!</h2>
           )}
         <br />
+        <h3>You've completed the quiz!</h3>
+        <br />
         <h4>Correct Guesses: </h4>
         <h4>Total Gusses: </h4>
         <h3>Score: </h3>
