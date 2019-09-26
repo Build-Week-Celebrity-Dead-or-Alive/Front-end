@@ -1,6 +1,6 @@
 import React from 'react'
 import Button from './Button'
-// import NameForm from './NameForm'
+import NameForm from './NameForm';
 
 
 const EndingScreen = () => {
@@ -39,15 +39,19 @@ const EndingScreen = () => {
         <br />
         <h3>You've completed the quiz!</h3>
         <br />
-        <h4>Correct Guesses: </h4>
-        <h4>Total Gusses: </h4>
-        <h3>Score: </h3>
-        {''} 
-     
-      </div>
-      <Button buttonText={'PLAY AGAIN'} pathName={'play'} />
+        <h4>Correct Guesses: {correctGuesses} </h4>
+        <h4>Total Gusses: {guess} </h4>
+        <h3>Score:{isNaN(score) ? 0 : score} </h3>
+        {isNameHere ? null : (  
+      <div>
+      <h4>Enter your name to save your score:</h4>
+      <NameForm score={score}/>
     </div>
-  )
+  )}
+</div>
+<Button buttonText={'PLAY AGAIN'} pathName={'play'} />
+</div>
+)
 }
 
 export default EndingScreen

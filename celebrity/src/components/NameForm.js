@@ -4,7 +4,7 @@ import axios from 'axios'
 
 const NameForm = (props) => {
     const [playerName, setPlayerName] = useState('')
-  
+    const [newPlayer, setNewPlayer] = useState('')
     const handleChange = (e) => {
       setPlayerName(e.target.value)
     }
