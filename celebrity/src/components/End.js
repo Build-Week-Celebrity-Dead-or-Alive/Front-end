@@ -7,7 +7,7 @@ const EndingScreen = () => {
   const correctGuesses = localStorage.getItem('CorrectGuesses');
   const guess = localStorage.getItem("TotalGuesses");
 
-
+  let score = Math.floor(correctGuesses * (5 * (correctGuesses / guess)));
 
   return (
     <div className='end-screen'>
