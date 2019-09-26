@@ -12,57 +12,15 @@ const StyledGameContainer = styled.div`
 `;
 
 export default function GameContainer(props) {
-  const mockCelebList = [
-    {
-      id: 0,
-      name: "Tupac Shakur",
-      image_url:
-        "https://upload.wikimedia.org/wikipedia/en/thumb/b/b5/Tupac_Amaru_Shakur2.jpg/220px-Tupac_Amaru_Shakur2.jpg",
-      info: "An American Rapper",
-      born: 1971,
-      died: 1996,
-      isDead: 1
-    },
-    {
-      id: 1,
-      name: "Notorious B.I.G",
-      image_url:
-        "https://upload.wikimedia.org/wikipedia/en/thumb/5/51/The_Notorious_B.I.G.jpg/240px-The_Notorious_B.I.G.jpg",
-      info: "Considered to be one of the greatest rappers of all time.",
-      born: 1972,
-      died: 1997,
-      isDead: 1
-    },
-    {
-      id: 2,
-      name: "Prince",
-      image_url:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Prince_at_Coachella_%28cropped%29.jpg/220px-Prince_at_Coachella_%28cropped%29.jpg",
-      info:
-        "American singer, songwriter, musician, record producer, dancer, actor, and filmmaker.",
-      born: 1958,
-      died: 2016,
-      isDead: 1
-    },
-    {
-      id: 3,
-      name: "Eminem",
-      image_url:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Eminem_live_at_D.C._2014_%28cropped%29.jpg/245px-Eminem_live_at_D.C._2014_%28cropped%29.jpg",
-      info:
-        "Rapper, songwriter, record producer, record executive, film producer, and actor.",
-      born: 1972,
-      died: null,
-      isDead: 0
-    }
-  ];
+  
   const [currentAnswer, setCurrentAnswer] = useState("");
   const [quizHistory, setQuizHistory] = useState([]);
   const [celebList, setCelebList] = useState([]);
   const [currentCard, setCurrentCard] = useState({});
   const [gameTimer, setGameTimer] = useState(0);
   const API = 'https://celebs-dead-or-alive.herokuapp.com/celebs';
-  const [ id, setID ] = useState(0);
+  const [ id, setID ] = useState(Math.floor(Math.random() * (51 - 1 + 1)) + 1);
+  const [limitQs, setLimitQs] = useState(0); 
 
   // Instantiate the timer
   useEffect(() => {
@@ -76,7 +34,7 @@ export default function GameContainer(props) {
   function getCurrentScore() {
     let true_count = 0;
     // let total_count = celebList.length;
-    let total_count = 52;
+    let total_count = 20;
     quizHistory.forEach(element => {
         true_count += element.correct ? 1 : 0
     })
@@ -87,7 +45,7 @@ export default function GameContainer(props) {
       axios.get(API)
       .then(res => {
           setCurrentCard(res.data[`${id}`]);
-          res.data[0].map(celeb => setCelebList(celebList.push(celeb)))
+        //   res.data.map(celeb => setCelebList(celebList.push(celeb)))
       })
       .catch(err => {
           debugger
@@ -100,7 +58,6 @@ export default function GameContainer(props) {
       <QuizDisplay
         currentCard={currentCard}
         setCurrentCard={setCurrentCard}
-        mockCelebList={mockCelebList}
         celebList={celebList}
         quizHistory={quizHistory}
         setQuizHistory={setQuizHistory}
@@ -110,8 +67,10 @@ export default function GameContainer(props) {
         gameTimer={gameTimer}
         setID={setID}
         id={id}
+        limitQs={limitQs}
+        setLimitQs={setLimitQs}
       />
-      <QuizHistory quizHistory={quizHistory} mockCelebList={mockCelebList} getCurrentScore={getCurrentScore}/>
+      <QuizHistory quizHistory={quizHistory} getCurrentScore={getCurrentScore}/>
     </StyledGameContainer>
   );
 }

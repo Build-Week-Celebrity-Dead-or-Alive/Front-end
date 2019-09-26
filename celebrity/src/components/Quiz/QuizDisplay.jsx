@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import styled from "styled-components";
 import End from "../End";
 import { Modal } from "semantic-ui-react";
@@ -96,21 +96,25 @@ export default function QuizDisplay(props) {
     celebList,
     getCurrentScore,
     gameTimer,
-    id,
+    limitQs,
+    setLimitQs,
     setID
   } = props;
 
   const gameOverModal = document.querySelector("#gameOverModal");
+  
 
   const onBtnClick = e => {
+      setLimitQs(limitQs+1);
+      console.log(limitQs);
     if (e.target.id === "dead") {
       if (currentCard.isDead) {
         setQuizHistory(
           quizHistory.concat({ name: currentCard.name, correct: true })
         );
         setCurrentAnswer("correct");
-        if (currentCard.id < 52) {
-          setID(id + 1);
+        if (limitQs < 20) {
+          setID(Math.floor(Math.random() * (51 - 1 + 1)) + 1);
         } else {
           gameOverModal.style.display = "block";
         }
@@ -119,8 +123,8 @@ export default function QuizDisplay(props) {
           quizHistory.concat({ name: currentCard.name, correct: false })
         );
         setCurrentAnswer("incorrect");
-        if (currentCard.id < 52) {
-          setID(id + 1);
+        if (limitQs < 20) {
+            setID(Math.floor(Math.random() * (51 - 1 + 1)) + 1);
         } else {
           gameOverModal.style.display = "block";
         }
@@ -131,8 +135,8 @@ export default function QuizDisplay(props) {
           quizHistory.concat({ name: currentCard.name, correct: true })
         );
         setCurrentAnswer("correct");
-        if (currentCard.id < 52) {
-          setID(id + 1);
+        if (limitQs < 20) {
+            setID(Math.floor(Math.random() * (51 - 1 + 1)) + 1);
         } else {
           gameOverModal.style.display = "block";
         }
@@ -141,8 +145,8 @@ export default function QuizDisplay(props) {
           quizHistory.concat({ name: currentCard.name, correct: false })
         );
         setCurrentAnswer("incorrect");
-        if (currentCard.id < 52) {
-          setID(id + 1);
+        if (limitQs < 20) {
+            setID(Math.floor(Math.random() * (51 - 1 + 1)) + 1);
         } else {
           gameOverModal.style.display = "block";
         }
