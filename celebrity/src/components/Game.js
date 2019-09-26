@@ -85,12 +85,12 @@ const GameScreen = () => {
         "rotateY(180deg)";
     };
     
-    return Math.floor(Math.random() * 80 + 1)
+    return Math.floor(Math.random() * 65 + 1)
   }
 
 
   const [data, setData] = useState({})
-  const [id, setId] = useState(Math.floor(Math.random() * 80 + 1))
+  const [id, setId] = useState(Math.floor(Math.random() * 65 + 1))
   const [score, setScore] = useState(0)
   const [guesses, setGuesses] = useState(0)
  const [time, setTime] = useState(false)
@@ -218,7 +218,7 @@ const GameScreen = () => {
 
 
 
-<StyledQuizDisplay>
+{/* <StyledQuizDisplay>
 
 <div className="flashcard">
         <div className="flashcard-inner">
@@ -243,7 +243,7 @@ const GameScreen = () => {
               >
                 Alive
               </button>
-              </StyledQuizDisplay>
+              </StyledQuizDisplay> */}
             </div>
           )
          }
