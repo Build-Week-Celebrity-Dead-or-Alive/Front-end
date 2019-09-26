@@ -76,8 +76,8 @@ const StyledQuizDisplay = styled.div`
     }
   }
   .game-timer {
-    width: 100px;
     background-color: white;
+    width: 200px;
     margin-top: 2rem;
     border-radius: 10px;
     height: 3rem;
@@ -104,6 +104,14 @@ export default function QuizDisplay(props) {
   } = props;
 
   const gameOverModal = document.querySelector("#gameOverModal");
+
+  function secondsToMinutes(seconds) {
+    let minutes = Math.floor(seconds / 60);
+    let secondsRemainder = Math.floor(seconds % 60);
+    let minStr = minutes.toString().padStart(2, '0');
+    let secRStr = secondsRemainder.toString().padStart(2, '0');
+    return (`${minStr}:${secRStr}`);
+  }
 
 
   const onBtnClick = e => {
@@ -180,7 +188,7 @@ export default function QuizDisplay(props) {
           Alive
         </button>
       </div>
-      <div className="game-timer">{gameTimer}</div>
+      <div className="game-timer">{secondsToMinutes(gameTimer)}</div>
       <div id="gameOverModal" class="modal">
         <div class="modal-content">
           <h1>GAME OVER!!</h1>
