@@ -188,7 +188,7 @@ const GameScreen = () => {
 
 
 
-    {/* <StyledQuizDisplay>
+    <StyledQuizDisplay>
       <div className="flashcard">
         <div className="flashcard-inner">
           <div className="flashcard-front">
@@ -252,7 +252,7 @@ const GameScreen = () => {
   
   )
   }
-export default GameScreen */}
+export default GameScreen
 
 
 
