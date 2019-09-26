@@ -158,28 +158,6 @@ const GameScreen = () => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
   return (
     <div className='play-screen'>
       <Route
