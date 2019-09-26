@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import CelebrityCard from "./CelebrityCard";
 import QuizDisplay from "./QuizDisplay";
 import QuizHistory from "./QuizHistory";
 import styled from "styled-components";
-import axios from 'axios';
+// import axios from 'axios';
 
 const StyledGameContainer = styled.div`
   display: flex;
