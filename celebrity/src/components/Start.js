@@ -11,7 +11,7 @@ const StartScreen = () => {
         <h1>Dead<br /> Or
         <br /> Alive</h1>
         <h3>
-         Test your knowledge of Celebrity's Dead or Alive
+          Test your knowledge of Celebrity's Dead or Alive
         </h3>
         <p>Identify of which famous Celebritys are alive or are dead</p>
       </header>
