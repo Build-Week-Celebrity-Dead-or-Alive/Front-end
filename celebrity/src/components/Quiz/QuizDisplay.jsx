@@ -1,8 +1,10 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import End from "../End";
 import { Modal } from "semantic-ui-react";
 import Button from "../Button";
+
+//test comment
 
 const StyledQuizDisplay = styled.div`
   width: 30vw;
@@ -102,11 +104,11 @@ export default function QuizDisplay(props) {
   } = props;
 
   const gameOverModal = document.querySelector("#gameOverModal");
-  
+
 
   const onBtnClick = e => {
-      setLimitQs(limitQs+1);
-      console.log(limitQs);
+    setLimitQs(limitQs + 1);
+    console.log(limitQs);
     if (e.target.id === "dead") {
       if (currentCard.isDead) {
         setQuizHistory(
@@ -124,7 +126,7 @@ export default function QuizDisplay(props) {
         );
         setCurrentAnswer("incorrect");
         if (limitQs < 20) {
-            setID(Math.floor(Math.random() * (51 - 1 + 1)) + 1);
+          setID(Math.floor(Math.random() * (51 - 1 + 1)) + 1);
         } else {
           gameOverModal.style.display = "block";
         }
@@ -136,7 +138,7 @@ export default function QuizDisplay(props) {
         );
         setCurrentAnswer("correct");
         if (limitQs < 20) {
-            setID(Math.floor(Math.random() * (51 - 1 + 1)) + 1);
+          setID(Math.floor(Math.random() * (51 - 1 + 1)) + 1);
         } else {
           gameOverModal.style.display = "block";
         }
@@ -146,7 +148,7 @@ export default function QuizDisplay(props) {
         );
         setCurrentAnswer("incorrect");
         if (limitQs < 20) {
-            setID(Math.floor(Math.random() * (51 - 1 + 1)) + 1);
+          setID(Math.floor(Math.random() * (51 - 1 + 1)) + 1);
         } else {
           gameOverModal.style.display = "block";
         }
