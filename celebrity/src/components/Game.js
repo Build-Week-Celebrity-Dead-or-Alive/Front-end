@@ -161,6 +161,25 @@ const GameScreen = () => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
   return (
     <div className='play-screen'>
       <Route
@@ -178,16 +197,11 @@ const GameScreen = () => {
               
               {data ? <CelebCard data={data} /> : <div>Loading...</div>}
 
-         {/* <QuizDisplay
-            currentCard={currentCard}
-            setCurrentCard={setCurrentCard}
-            celebList={celebList}
-            quizHistory={quizHistory}
-            setQuizHistory={setQuizHistory}
-            currentAnswer={currentAnswer}
-            setCurrentAnswer={setCurrentAnswer}
-            /> */}
- 
+       
+  {/* <QuizHistory quizHistory={quizHistory} mockCelebList={mockCelebList}/> */}
+
+
+
 
     <StyledQuizDisplay>
       <div className="flashcard">
@@ -217,24 +231,6 @@ const GameScreen = () => {
       </div>
     </StyledQuizDisplay>
   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 {/* <StyledQuizDisplay>
 

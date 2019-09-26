@@ -4,8 +4,8 @@ import Button from './Button'
 
 
 const EndingScreen = () => {
-//   const correctGuesses = localStorage.getItem('CorrectGuesses');
-//   const guess = localStorage.getItem("TotalGuesses");
+  const correctGuesses = localStorage.getItem('CorrectGuesses');
+  const guess = localStorage.getItem("TotalGuesses");
 
 
 
