@@ -26,6 +26,8 @@ export default function GameContainer(props) {
   const [id, setID] = useState(Math.floor(Math.random() * (51 - 1 + 1)) + 1);
   const [limitQs, setLimitQs] = useState(0);
   const [loading, setLoading] = useState(true);
+  const [idList, setIdList] = useState([]);
+
 
   useInterval(() => {
     if (gameActive) {
@@ -66,9 +68,10 @@ export default function GameContainer(props) {
 
   useEffect(() => {
     axios
-      .get(API)
+      .get(API + '/' + id)
       .then(res => {
-        setCurrentCard(res.data[`${id}`]);
+        setCurrentCard(res.data);
+        //setCurrentCard(res.data[`${id}`]);
         //   res.data.map(celeb => setCelebList(celebList.push(celeb)))
         setLoading(false);
       })
