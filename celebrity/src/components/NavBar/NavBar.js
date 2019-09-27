@@ -28,20 +28,26 @@ class NavBar extends Component {
     const { activeItem } = this.state;
     return (
       <Segment.Group className="menu-group">
-        <Segment color="white" inverted>
+        <Segment color="black" inverted>
           <Menu pointing secondary inverted stackable>
             <Menu.Menu className="menu-left">
               <Menu.Item>
-                <Icon name="coffee" size="big" fitted color="white" />
+                <Icon name="coffee" size="big" fitted color="black" />
               </Menu.Item>
               <Menu.Item header className="headliner">
                 <span>Dead or Alive </span>
 
  
       <nav>
+        <div className="Home">
          <Link to='/'>Home</Link>
+         </div>
+         </nav>
+         <nav>
+         <div className="Sign">
          <Link to='/signup'>Signup</Link>
          <Link to='/login'>LogIn</Link>
+         </div>
       </nav>
   
               </Menu.Item>

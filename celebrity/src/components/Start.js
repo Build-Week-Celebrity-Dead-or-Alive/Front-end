@@ -28,13 +28,16 @@ const StartScreen = () => {
         </h3>
         <p>Identify of which famous Celebritys are alive or are dead</p>
       </header>
-      <div className='buttons'>
-        <Button buttonText={'START PLAYING'} pathName={'play'} />
-        <Button buttonText={'signup'} pathName={'signup'} /> 
-        <Button buttonText={'login'} pathName={'login'} /> 
+
+      <div className="buttons">
+        <Button buttonText={"START PLAYING"} pathName={"play"} />
+
+        {isNameHere === "" ? ( <Button buttonText={"signup"} pathName={"signup"} />) : null}
+        {isNameHere === "" ? ( <Button buttonText={"login"} pathName={"login"} />
+        ) : null}
       </div>
     </StyledGameContainer>
   )
 }
 
-export default StartScreen
+export default StartScreen;
