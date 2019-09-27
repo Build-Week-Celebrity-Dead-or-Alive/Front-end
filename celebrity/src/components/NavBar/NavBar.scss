@@ -14,13 +14,18 @@ div.header.item.headliner {
     background: black;
     color: azure;
     flex-direction: row;
-    padding: .5%;
+    padding: 1.5%;
     justify-content: space-between;
+    align-items: center;
+    span {
+      font-family: 'Rock Salt', cursive;
+    }
 }
 
 a {
   text-decoration: none;
   color: pink;
+  margin-left: 1rem;
 }
 
 div.buttons {

@@ -4,7 +4,6 @@ import End from "../End";
 import { Modal } from "semantic-ui-react";
 import Button from "../Button";
 
-//test comment
 
 const StyledQuizDisplay = styled.div`
   width: 30vw;
@@ -12,13 +11,18 @@ const StyledQuizDisplay = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content:space-evenly;
   border-radius: .3rem;
-  margin-left: 2rem;
+  height: 60vh;
   .flashcard {
     background-color: transparent;
     width: 300px;
     height: 200px;
     perspective: 1000px;
+    h1 {
+          font-size: 10rem;
+          margin: 0;
+        }
 
     .flashcard-inner {
       position: relative;
@@ -36,6 +40,7 @@ const StyledQuizDisplay = styled.div`
         backface-visibility: hidden;
         color: white;
         font-size: 2.5rem;
+
       }
       .flashcard-back {
         color: white;
@@ -51,14 +56,16 @@ const StyledQuizDisplay = styled.div`
     #dead {
       background-color: red;
       color: white;
+      width: 10vw;
     }
     #alive {
       background-color: green;
       color: white;
+      width: 10vw;
     }
   }
   .modal {
-    display: none; /*Hidden by default */
+    display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
     left: 0;
@@ -73,7 +80,21 @@ const StyledQuizDisplay = styled.div`
       margin: 15% auto; /* 15% from the top and centered */
       padding: 20px;
       border: 1px solid #888;
-      width: 80%; /* Could be more or less, depending on screen size */
+      width: 50%; /* Could be more or less, depending on screen size */
+      padding-bottom: 60px;
+      h1 {
+        font-family: "Orbitron", sans-serif;
+        
+        font-size: 3rem;
+        margin-bottom: -25px;
+      }
+      button, a button {
+        &:hover {
+          background-color: white;
+          color: black;
+          border: black;
+        }
+      }
     }
   }
   .game-timer {
@@ -90,10 +111,13 @@ const StyledQuizDisplay = styled.div`
 
 let arr = [];
 let i = 0;
-while (arr.length < 21) {
-  var r = Math.floor(Math.random() * 52) + 1;
-  if (arr.indexOf(r) === -1) arr.push(r);
-}
+
+  while (arr.length < 21) {
+    var r = Math.floor(Math.random() * 52) + 1;
+    if (arr.indexOf(r) === -1) arr.push(r);
+  }
+
+
 
 export default function QuizDisplay(props) {
   const {
@@ -103,7 +127,7 @@ export default function QuizDisplay(props) {
     setQuizHistory,
     currentAnswer,
     setCurrentAnswer,
-    celebList,
+    celenList,
     getCurrentScore,
     gameTimer,
     limitQs,
@@ -170,9 +194,9 @@ export default function QuizDisplay(props) {
       <div className="game-timer">{secondsToMinutes(gameTimer)}</div>
       <div id="gameOverModal" class="modal">
         <div class="modal-content">
-          <h1>GAME OVER!!</h1>
-          <p>Score:{getCurrentScore()}</p>
-          <p>Time: {secondsToMinutes(gameTimer)}</p>
+          <h1>GAME OVER</h1>
+          <h2>SCORE: {getCurrentScore()}</h2>
+          <h2>TIME: {secondsToMinutes(gameTimer)}</h2>
           <button
             buttonText={"PLAY AGAIN"}
             onClick={() => window.location.reload()}

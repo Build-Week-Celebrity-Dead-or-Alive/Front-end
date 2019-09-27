@@ -35,12 +35,13 @@ class NavBar extends Component {
                 <Icon name="coffee" size="big" fitted color="white" />
               </Menu.Item>
               <Menu.Item header className="headliner">
-                Dead or Alive 
+                <span>Dead or Alive </span>
 
  
       <nav>
          <Link to='/'>Home</Link>
          <Link to='/signup'>Signup</Link>
+         <Link to='/login'>LogIn</Link>
       </nav>
   
               </Menu.Item>

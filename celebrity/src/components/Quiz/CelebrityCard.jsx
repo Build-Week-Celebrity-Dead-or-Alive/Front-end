@@ -6,12 +6,13 @@ const StyledCelebCard = styled.div`
     flex-direction: column;
     background-color: black;
     color: white;
-    width: 25vw;
+    width: 30vw;
     align-items: center;
-    padding: 4rem;
+    height: 60vh;
+    justify-content: center;
     img{
-        width: 80%;
-        height: 20rem;
+        width: 60%;
+        height: 60%;
     }
     border-radius: .3rem;
 `;
