@@ -16,12 +16,12 @@ const StyledGameContainer = styled.div`
 `;
 
 const StartScreen = () => {
-  let isNameHere = window.localStorage.getItem("SignUp") || "";
+  let isNameHere = window.localStorage.getItem("SignUpCred") || "";
 
   return (
     <StyledGameContainer>
       <header className='start-content'>
-        {/* {isNameHere === "" ? null : <h2>Welcome {isNameHere}!</h2>} */}
+        {isNameHere === "" ? null : <h2>Welcome {isNameHere}!</h2>}
         <h1>Dead Or Alive</h1>
         <h3>
           Test your knowledge of Celebrity's Dead or Alive
