@@ -33,8 +33,8 @@ const StartScreen = () => {
         <Button buttonText={"START PLAYING"} pathName={"play"} />
 
         {isNameHere === "" ? ( <Button buttonText={"signup"} pathName={"signup"} />) : null}
-        {isNameHere === "" ? ( <Button buttonText={"login"} pathName={"login"} />
-        ) : null}
+        {/* {isNameHere === "" ? ( <Button buttonText={"login"} pathName={"login"} /> */}
+      
       </div>
     </StyledGameContainer>
   )

@@ -97,6 +97,7 @@ const StyledSignup = styled.div`
         <button type="submit" disabled>Submit (disabled)</button> </form> */}
         
         class Login extends React.Component {
+
           state = {
             credentials: {
               name:'',
@@ -104,7 +105,7 @@ const StyledSignup = styled.div`
               password: ''
             }
           };
-        
+
           handleChange = e => {
             this.setState({
               credentials: {
@@ -114,23 +115,26 @@ const StyledSignup = styled.div`
             });
           };
         
-          login = e => {
+           login = e => {
             e.preventDefault();
             axiosWithAuth()
-              .post('/login', this.state.credentials)
+              .post(`/login`, this.state.credentials)
               .then(res => {
-                localStorage.setItem('token', res.data.payload);
+                console.log(res.data)
+                localStorage.setItem('token', res.data.token);
                 // redirect to the apps main page?
                 this.props.history.push('/protected');
               })
-              .catch(err => console.log(err));
+              .catch(err => console.log(err.response));
           };
         
           render() {
             return (
               <StyledSignup>
-              <div>
+              <div className='signup-screen'>
+                <form>
                 <form onSubmit={this.login}>
+                <label htmlFor='username'>
                 <input
                     type="text"
                     name="name"
@@ -138,6 +142,8 @@ const StyledSignup = styled.div`
                     value={this.state.credentials.name}
                     onChange={this.handleChange}
                   />
+                  </label>
+                  <label htmlFor='email'>
                  <input
                     type="text"
                     name="username"
@@ -145,6 +151,8 @@ const StyledSignup = styled.div`
                     value={this.state.credentials.username}
                     onChange={this.handleChange}
                   />
+                  </label>
+                  <label htmlFor='password'>
                   <input
                     type="password"
                     name="password"
@@ -152,7 +160,9 @@ const StyledSignup = styled.div`
                     value={this.state.credentials.password}
                     onChange={this.handleChange}
                   />
+                  </label>
                   <button>Log in</button>
+                </form>
                 </form>
               </div>
               </StyledSignup>

@@ -176,3 +176,29 @@ margin-left: 43.5%;
 }
   
 
+.login-screen{
+  @include flex(center, center);
+  flex-direction: column;
+  form {
+    @include flex(center, center);
+    flex-direction: column;
+    label {
+      @include flex(center, center);
+      flex-direction: column;
+      padding: 1rem 0;
+      font-size: 1.4rem;
+      line-height: 1.6rem;
+      text-transform: uppercase;
+      input {
+        padding: 0.6rem;
+        border-radius: 6px;
+      }
+    }
+    button {
+      background-color: black;
+      margin-bottom: 2rem;
+      color: white;
+      text-decoration: none;
+    }
+  }
+}

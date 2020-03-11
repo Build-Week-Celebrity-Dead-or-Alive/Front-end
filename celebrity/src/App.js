@@ -21,20 +21,13 @@ function App() {
       <div className="content">
         <Switch>
           <Route exact path="/" component={Start} />
-          <Route path="/login" component={Login} />
+          {/* <Route path="/login" component={Login} /> */}
           <Route path="/signup" component={Signup} />
           <Route exact path="/end" component={End} />
           <Route exact path="/play" component={GameContainer} />
           <Router>
       <div className="App">
-        <ul>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-          <li>
-            <Link to="/protected">Protected Page</Link>
-          </li>
-        </ul>
+       
         <Switch>
           <PrivateRoute exact path="/protected" component={Start} />
           <Route path="/login" component={Login} />
